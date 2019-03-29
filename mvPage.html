@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="img/logo.png" type="image/x-icon">
+		<title>乐呵音乐-高质量音乐在线聆听，下载</title>
+		<style>
+			body,html{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: white;
+			}
+			/*头部样式,导航栏*/
+	    	#headArea{
+	    		width: 100%;
+	    		height: 80px;
+	    		/*border: 1px solid red;*/
+	    		
+	    		position: relative;
+	    		background-color: rgba(0,0,0,0.8);
+	    		
+	    	}
+	    	#logoArea{
+	    		width: 10%;
+	    		height: 100%;
+	    		/*border: 1px solid blueviolet;*/
+	    		margin-left: 10%;
+	    	}
+	    	#logoArea img{
+	    		height: 80%;
+	    		position: absolute;
+	    		top: 10%;
+	    		left: 15%;
+	    	}
+	    	#daoHang{
+	    		width: 50%;
+	    		height: 100%;
+	    		/*border: 1px solid red;*/
+	    		color: white;
+	    		position: absolute;
+	    		left: 20%;
+	    		top: 0;
+	    		
+	    		
+	    	}
+	    	#daoHang a{
+	    		text-decoration: none;
+	    	}
+	    	@font-face {
+	    		font-family:poppin;
+	    		src: url("https://y.gtimg.cn/mediastyle/yqq/font/poppin.ttf?max_age=2592000");
+	    	}
+	    	#daoHang li{
+	    		height: 80px;
+	    		width: 100px;
+	    		list-style-type: none;
+	    		text-align: center;
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		font-size: 18px;
+	    		vertical-align: middle;
+	    		position: absolute;
+	    		
+	    	}
+	    	#daoHang li:nth-of-type(1){
+	    		left: 0;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(2){
+	    		left: 100px;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(3){
+	    		left: 200px;
+	    		top: 0;	
+	    		
+	    	}
+	    	#daoHang li:nth-of-type(4){
+	    		left: 300px;
+	    		top: 0;	
+	    	}
+	    	#daoHang a{
+	    		width: 100px;
+	    		height: 80px;
+	    		display: block;
+	    		color: white;
+	    		position: relative;
+	    		line-height: 90px;
+	    		
+	    		
+	    	}
+	    	#daoHang a:hover{
+	    		background-color: #009af3;
+	    		color: white;
+	    		cursor: pointer;
+	    		transition: all 0.5s;
+	    	}
+	    	/*头部样式---END*/
+	    	/*背景图片样式*/
+	    	#bgArea{
+	    		width: 100%;
+	    		height: 200px;
+	    		position: relative;
+	    		top: 0px;
+	    		background-image: url(img/bg-search3.jpg);
+	    		background-position-y: 35%;
+	    		background-repeat: no-repeat;
+	    		background-size: 100%;	
+	    	}
+	    	/*背景图片样式---END*/
+	    	#contentArea{
+	    		width: 80%;
+	    		height: 600px;
+	    		margin-left: 10%;
+				position: relative;
+				top: 0px;
+				/*border: 1px solid red;*/
+	    	}
+	    	#mvBar{
+	    		width: 100%;
+	    		height: 50px;
+	    		/*border: 1px solid red;*/
+	    	}
+	    	#mvBar ul{
+	    		margin: 0;
+	    		padding: 0;
+	    		margin-left: 50px;
+	    	}
+	    	#mvBar ul li{
+	    		list-style: none;
+	    		display: inline-block;
+	    		font-size: 14px;
+	    		margin-left: 50px;
+	    		margin-top: 10px;
+	    	}
+	    	#mvBar ul li:hover{
+	    		color: #009af3;
+	    		cursor: pointer;
+	    	}
+	    	#mvList{
+	    		width: 100%;
+	    		height: 600px;
+	    		/*border: 1px solid red;*/
+	    		position: absolute;
+	    	}
+	    	#mvList ul li{
+	    		position: relative;
+	    		display: inline-block;
+	    		list-style-type: none;
+	    		width: 250px;
+	    		height: 180px;
+	    		/*border: 1px solid red;*/
+	    		margin-left: 30px;
+	    		margin-top: 40px;
+	    		font-size: 12px;
+	    	}
+	    	#mvList ul li a{
+	    		text-decoration: none;
+	    		color: black;
+	    		cursor: pointer;
+	    	}
+	    	#mvList ul li img{
+	    		width: 220px;
+	    		position: relative;
+	    		margin-left: 15px;
+	    		cursor: pointer;
+	    	}
+	    	#mvList ul li p:nth-of-type(1){
+	    		position: relative;
+	    		margin-top: 5px;
+	    		margin-left: 20px;
+	    		text-align: left;
+	    	}
+	    	#mvList ul li p:hover{
+	    		color: #009af3;
+	    	}
+	    	.singername{
+	    		text-align: left;
+	    		position: relative;
+	    		
+	    		margin-left: 20px;
+	    		color: dimgray;
+	    	}
+	    	#bgArea p{
+	    		font-size: 36px;
+	    		color:antiquewhite;
+	    		font-weight: bold;
+	    		position: absolute;
+	    		left: 40%;
+	    		top: 10%;
+	    	}
+	    	#tp-weather-widget{
+				position: absolute;
+				top: 25px;
+				right: 10px;
+				color: white;
+				z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tp-weather-widget"></div>
+		<script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+		<script>tpwidget("init", {
+		    "flavor": "slim",
+		    "location": "WX4FBXXFKE4F",
+		    "geolocation": "enabled",
+		    "language": "zh-chs",
+		    "unit": "c",
+		    "theme": "chameleon",
+		    "container": "tp-weather-widget",
+		    "bubble": "enabled",
+		    "alarmType": "badge",
+		    "color": "#FFFFFF",
+		    "uid": "U485367323",
+		    "hash": "5ac870bc084415c97cda58b8cc150112"
+		});
+		tpwidget("show");</script>
+		<!--头部区域-->
+		<div id="headArea">
+			<div id="logoArea">
+				<img src="img/logo.png" />
+			</div>
+			<!--导航-->
+			<div id="daoHang">
+				<ul>
+					<li><a href="first.html">首页</a></li>
+					<li><a href="singerPage.html">歌手</a></li>
+					<li><a href="toplistPage.html">排行榜</a></li>
+					<li><a href="mvPage.html">MV</a></li>
+				</ul>
+			</div>
+			<!--导航---END-->
+		</div>
+		<!--头部区域---END-->
+		<div id="bgArea">
+			<p>海量MV 尽在眼前</p>
+		</div>
+		<div id="contentArea">
+			<div id="mvBar">
+				<ul>
+					
+					<li onclick="getMv('0')">全部</li>
+					<li onclick="getMv('1')">内地</li>
+					<li onclick="getMv('2')">港台</li>
+					<li onclick="getMv('3')">欧美</li>
+					<li onclick="getMv('4')">韩国</li>
+					<li onclick="getMv('5')">日本</li>
+				</ul>
+			</div>
+			<div id="mvList">
+				<ul></ul>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+		<script>
+			function  getMv(parames) {
+				$("#mvList ul").empty();
+				$.ajax({
+					type:"get",
+					url:"https://c.y.qq.com/mv/fcgi-bin/getmv_by_tag?g_tk=762188800&jsonpCallback=getMvlist&loginUin=332393900&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&utf8=1&type=2&year=0&area="+parames+"&tag=0&pageno=0&pagecount=50&otype=json&taglist=1&_=0.7472283373980757",
+					dataType:'jsonp',
+		          	jsonp: "jsonpCallback",
+		          	jsonpCallback:"getMvlist",
+		          	callback:'callback',
+		          	scriptCharset: 'GBK',//解决中文乱码
+		          	success:function(data) {
+		          		console.log(data);
+		          		var mv_url=[];
+		          		var mvid=[];
+		          		for (var i=0;i<data.data.mvlist.length;i++) {
+		          			$("#mvList ul").append("<li><a href='test3.html'><img /><p>"+data.data.mvlist[i].mvtitle+"</p><p class='singername'>"+data.data.mvlist[i].singername+"</p></a></li>")
+		          			mv_url.push(data.data.mvlist[i].picurl);
+		          			mvid.push(data.data.mvlist[i].vid);
+		          		}
+		          		for (var k=0;k<50;k++) {
+		          			$("#mvList ul img:eq("+k+")").attr("src",mv_url[k])
+		          		}
+		          		$("#mvList ul li").click(function() {
+		          			function setCookie(mvid,value){
+						    	var Days = 3; 
+						    	var exp　= new Date();
+						    	exp.setTime(exp.getTime() +Days*24*60*60*1000);
+								document.cookie = ""+mvid +"="+ escape (value) + ";expires=" + exp.toGMTString();
+							}
+					        setCookie('mvid',mvid[$("#mvList li").index(this)]);
+							location.href = "test3.html";
+		          		});
+		          	},
+		          	error:function(e) {
+		          		console.log('error!');
+		          	}
+				});
+			}
+			//全部mv
+			getMv('0');
+		</script>
+		
+	</body>
+</html>

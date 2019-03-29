@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				color: black;
+				font-size: 16px;
+			}
+			#box ul{
+				list-style: none;
+			}
+			
+			#box ul li:hover{
+				color: #009af3;
+				cursor: pointer;	
+			}
+		</style>
+	</head>
+	<body>
+		<audio controls="controls" src="http://dl.stream.qqmusic.qq.com/M800004GK4aP4TGbbG.mp3?vkey=5C041492B23DE955B09872725FD043A60EADA26DDCE2D2D23A030A1346565849F7EE42C25B60CE7470C979040042D56831677D4F3D749DAB&guid=5150825362&fromtag=1"></audio>
+		<p>跳转到歌手</p>
+		<div id="box">
+			<ul>
+				
+			</ul>
+		</div>
+		
+		<script src="//y.gtimg.cn/music/h5/player/player.js"></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+		<script>
+			var player=new Player();
+			//歌手json
+			var media_mid;
+			var url = 'https://c.y.qq.com/v8/fcg-bin/v8.fcg?channel=singer&page=list&pagesize=100&format=json&inCharset=utf8&outCharset=utf-8&pagenum=1&key=cn_man_all';
+//			付费歌曲url
+			var payurl='http://dl.stream.qqmusic.qq.com/M800'+media_mid+'.mp3?vkey=5C041492B23DE955B09872725FD043A60EADA26DDCE2D2D23A030A1346565849F7EE42C25B60CE7470C979040042D56831677D4F3D749DAB&guid=5150825362&fromtag=1'
+	        $.ajax({
+	          url:url,
+	          type:"get",
+	          dataType:'jsonp',
+	          jsonp: "jsonpCallback",
+	          scriptCharset: 'GBK',//解决中文乱码
+	          success: function(data){
+	          	//推荐音乐数据
+	          	//console.log(data);
+	          	//alert(data.data.list[0].Fsinger_mid);
+	          	var singerMid=[];
+	          	for (var i=0;i<data.data.list.length;i++) {
+	          		$("#box ul").append("<li>"+data.data.list[i].Fsinger_name+"</li>");
+	          		singerMid.push(data.data.list[i].Fsinger_mid);
+	          	}
+	          	
+	          	
+	          	$("#box li").click(function() {
+	          		var val=singerMid[$("#box ul li").index(this)];
+	          		//alert(val)
+	          		$.ajax({
+	          			type:"get",
+	          			url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&singermid='+val+'&order=listen&begin=0&num=50',
+	          			dataType:'jsonp',
+				         jsonp: "jsonpCallback",
+				         scriptCharset: 'GBK',//解决中文乱码
+				         success:function(data2) {
+				         	//alert("1")
+				         	console.log(data2)
+				         	$("#box ul").empty();
+				         	var songMid=[];
+				         	for (var j=0;j<data2.data.list.length;j++) {
+				         		$("#box ul").append("<li>"+data2.data.list[j].musicData.songname+"</li>");
+				         		songMid.push(data2.data.list[j].musicData.songmid)
+				         	}
+				         	$("#box ul li").click(function(){
+				         		player.play(songMid[$("#box ul li").index(this)]);
+				         		
+				         	});
+				         },
+				         error:function(e) {
+				         	console.log('error');
+				         }
+				         
+	          		});
+	          		
+	          	});
+	          	
+	          },
+	          error:function (e) {
+	                console.log('error');
+	              }
+	        });
+
+	</script>
+	</body>
+</html>

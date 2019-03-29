@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="img/logo.png" type="image/x-icon">
+		<title>乐呵音乐-高质量音乐在线聆听，下载</title>
+		<style>
+			body,html{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: white;
+			}
+			/*头部样式,导航栏*/
+	    	#headArea{
+	    		width: 100%;
+	    		height: 80px;
+	    		/*border: 1px solid red;*/
+	    		
+	    		position: relative;
+	    		background-color: rgba(0,0,0,0.8);
+	    		
+	    	}
+	    	#logoArea{
+	    		width: 10%;
+	    		height: 100%;
+	    		/*border: 1px solid blueviolet;*/
+	    		margin-left: 10%;
+	    	}
+	    	#logoArea img{
+	    		height: 80%;
+	    		position: absolute;
+	    		top: 10%;
+	    		left: 15%;
+	    	}
+	    	#daoHang{
+	    		width: 50%;
+	    		height: 100%;
+	    		/*border: 1px solid red;*/
+	    		color: black;
+	    		position: absolute;
+	    		left: 20%;
+	    		top: 0;
+	    		
+	    		
+	    	}
+	    	#daoHang a{
+	    		text-decoration: none;
+	    	}
+	    	@font-face {
+	    		font-family:poppin;
+	    		src: url("https://y.gtimg.cn/mediastyle/yqq/font/poppin.ttf?max_age=2592000");
+	    	}
+	    	#daoHang li{
+	    		height: 100px;
+	    		width: 100px;
+	    		list-style-type: none;
+	    		text-align: center;
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		font-size: 18px;
+	    		vertical-align: middle;
+	    		position: absolute;
+	    		
+	    	}
+	    	#daoHang li:nth-of-type(1){
+	    		left: 0;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(2){
+	    		left: 100px;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(3){
+	    		left: 200px;
+	    		top: 0;	
+	    		
+	    	}
+	    	#daoHang li:nth-of-type(4){
+	    		left: 300px;
+	    		top: 0;	
+	    	}
+	    	#daoHang a{
+	    		width: 100px;
+	    		height: 80px;
+	    		display: block;
+	    		color: white;
+	    		position: relative;
+	    		line-height: 90px;
+	    		
+	    		
+	    	}
+	    	#daoHang a:hover{
+	    		background-color: #009af3;
+	    		color: white;
+	    		cursor: pointer;
+	    		transition: all 0.5s;
+	    	}
+	    	/*头部样式---END*/
+	    	#singerBgp{
+	    		width: 100%;
+	    		height: 200px;
+	    		border-bottom: 1px solid gray;
+	    		position: relative;
+	    		top: 10px;
+	    	}
+	    	#singerBgp img{
+	    		width: 150px;
+	    		height: 150px;
+	    		border-radius: 50%;
+	    		position: relative;
+	    		margin-left: 400px;
+	    		top: 20px;
+	    	}
+	    	#singerBgp span{
+	    		position: absolute;
+	    		left: 560px;
+	    		top: 40px;
+	    	}
+	    	/*icon图标*/
+	    	.icon_play{
+				position: absolute;
+			   	top: 7px;
+			   	left: 750px;
+			    margin-top: -8px;
+			    width: 14px;
+			    height: 14px;
+			    background-position: 0 0px;
+			    
+			}
+			.icon_down{
+				position: absolute;
+			   	top: 7px;
+			   	left: 770px;
+			    margin-top: -8px;
+			    width: 24px;
+			    height: 14px;
+			    background-position: -80px 0px;
+			}
+			.icon_only{
+				position: absolute;
+			   	margin-left: 0;
+			    margin-top: -12px;
+			    width: 40px;
+			    height: 28px;
+			    background-position: -110px -480px;
+			}
+			.icon_HQ{
+				position: absolute;
+			   	margin-left: 38px;
+			    margin-top: -10px;
+			    width: 20px;
+			    height: 25px;
+			    background-position: -180px -480px;
+			}
+			.icon_SQ{
+				position: absolute;
+			   	margin-left: 60px;
+			    margin-top: -10px;
+			    width: 20px;
+			    height: 25px;
+			    background-position: -210px -480px;
+			}
+			.icon_vip{
+				position: absolute;
+			   	margin-left: 85px;
+			    margin-top: -10px;
+			    width: 20px;
+			    height: 28px;
+			    background-position: -560px -480px;
+			}
+			.icon_mv{
+				position: absolute;
+			   	margin-left: 60px;
+			    margin-top: -10px;
+			    width: 20px;
+			    height: 25px;
+			    background-position: -150px -480px;
+			}
+			.icon_down:hover{
+				position: absolute;
+			   	top: 7px;
+			   	left: 770px;
+			    margin-top: -8px;
+			    width: 24px;
+			    height: 14px;
+			    background-position: -80px -30px;
+			}
+			.icon_play:hover{
+				position: absolute;
+			   	top: 7px;
+			   	left: 750px;
+			    margin-top: -8px;
+			    width: 14px;
+			    height: 14px;
+			    background-position: 0px -30px;
+			}
+			.sprite, .sprite_before:before {
+			    background-image: url(img/icon_sprite.png);    
+			}
+			.list_menu{
+				background-image: url(img/icon_splice.png);
+				
+			}
+	    	/*歌单内容*/
+	    	#contentArea{
+	    		width: 80%;
+	    		height: 600px;
+	    		/*border: 1px solid red;*/
+	    		margin-left: 10%;
+				position: relative;
+				top: 10px;
+	    	}
+	    	#contentArea{
+				width: 80%;
+				height: 600px;
+				margin-left: 10%;
+				position: relative;
+				top: 10px;
+				/*border: 2px solid black;*/
+			}
+			#songlist-head{
+				width: 60%;
+				height: 20px;
+				position: absolute;
+				top: 30px;
+				left: 20%;
+				/*border: 1px solid black;*/
+			}
+			
+			#songlist-head  li{
+				
+				position: absolute;
+				text-align: left;
+				vertical-align: middle;
+				list-style-type: none;
+				/*border: 1px solid red;*/
+				color: dimgray;
+				font-size: 14px;
+			}
+			#songlist-head li:nth-of-type(1){
+				width: 300px;
+				height: 20px;
+				left: 0px;
+				
+			}
+			#songlist-head li:nth-of-type(2){
+				width: 200px;
+				height: 20px;
+				left: 300px;
+				
+			}
+			#songlist-head li:nth-of-type(3){
+				width: 200px;
+				height: 20px;
+				left: 500px;
+				
+			}
+			#songlist-head li:nth-of-type(4){
+				width: 70px;
+				height: 20px;
+				left: 740px;
+				
+			}
+			#songList{
+				width: 60%;
+				height: 400px;
+				
+				position: absolute;
+				left: 20%;
+				top: 50px;
+				/*border: 1px solid red;*/
+			}
+			#songList li{
+				list-style-type: none;
+				position: relative;
+				left: -40px;
+				margin-top: 25px;
+				font-size: 12px;
+				color: #333333;	
+				
+			}
+			#songList li:hover{
+				color: #009af3;
+				cursor: pointer;
+			}
+			.spanSongName_style{
+				left: 0;
+			}
+			.spanName_style{
+				position: absolute;
+				left: 300px;
+				
+			}
+			.spanAlbum_style{
+				position: absolute;
+				font-size: 12px;
+				left: 490px;
+			}
+			#contentArea h2{
+				position: relative;
+				margin-left: 240px;
+				top: 0px;
+			}
+			
+			/*播放器样式*/
+    		
+    		#MusicPlayer{
+    			/*border: 1px solid red;*/
+    			width: 100%;
+    			height: 80px;
+    			position: fixed;
+    			bottom: 0%;
+    			left: 0px;
+    			transition: all 1s;
+    			background-color: rgba(0,0,0,0.8);
+    			background-image: ;
+    			
+    		}
+    		#coverArea{
+    			
+    			width: 20%;
+    			height: 90%;
+    			position: relative;
+    			left: 5%;
+    			top: 5%;
+    		}
+    		/*歌曲封面*/
+    		#cover{
+    			position: absolute;
+    			height: 100%;
+    			border-radius: 50%;
+    			box-shadow: 0 0 5px black;
+    			animation: spin 18s infinite linear;
+    			animation-play-state: paused;
+    			cursor: pointer;
+    			
+    		}
+    		@keyframes spin{
+	    		from{transform: rotate(0deg);}
+	    		to{transform: rotate(360deg);}
+	    	}
+	    	#zt{
+	    		height: 50%;
+	    		position: absolute;
+	    		left: 160px;
+	    		top: 30%;
+	    		display: none;
+	    	}
+	    	#bf{
+
+	    		height: 50%;
+	    		position: absolute;
+	    		left: 160px;
+	    		top: 30%;
+	    		
+	    	}
+	    	#syq{
+	    		height: 60%;
+	    		position: absolute;
+	    		left: 100px;
+	    		top: 25%;
+	    	}
+	    	#xyq{
+	    		height: 60%;
+	    		position: absolute;
+	    		left: 220px;
+	    		top: 25%;
+	    	}
+	    	/*进度条*/
+	    	#container2{
+	    		width: 800px;
+	    		height: 5px;
+	    		border-radius:20px ;
+	    		/*border: 1px solid red;*/
+	    		position: absolute;
+	    		top: 40px;
+	    		left: 400px;
+	    		overflow: hidden;
+	    	}
+	    	#container2 #hui{
+	    		width: 800px;
+	    		height: 5px;
+	    		background-color: darkgrey;
+	    		cursor: pointer;
+	    	}
+	    	#container2 #hong{
+	    		width: 800px;
+	    		height: 5px;
+	    		background-color: white;
+	    		position: absolute;
+	    		left: -800px;
+	    		top: 0;
+	    		cursor: pointer;
+	    	}
+	    	#lan{
+	    		width: 10px;
+	    		height: 10px;
+	    		border-radius: 50%;
+	    		background-color: white;
+	    		position: absolute;
+	    		top: 37.5px;
+				left: 395px;
+	    		opacity: 0.8;
+	    		box-shadow: gray 0 0 10px;
+	    	}
+	    	#bjTime{
+	    		position: absolute;
+	    		left: 350px;
+	    		top: 20px;
+	    		font-size: small;
+	    		color: #eeeeee;
+	    		display: inline;
+	    	}
+	    	#qbTime{
+	    		position: absolute;
+	    		left: 1210px;
+	    		top: 20px;
+	    		font-size: small;
+	    		color: #eeeeee;
+	    		
+	    	}
+	    	.icon_Prev{
+	    		position: absolute;
+			   	top: 25px;
+			   	left: 90px;
+			    margin-top: -8px;
+			    width: 36px;
+			    height: 36px;
+			    background-position: 0px -143px;
+			    /*border: 1px solid red;*/
+	    	}
+	    	.icon_Prev:hover{
+	    		position: absolute;
+			   	top: 25px;
+			   	left: 90px;
+			    margin-top: -8px;
+			    width: 36px;
+			    height: 36px;
+			    background-position: -36px -143px;
+			    /*border: 1px solid red;*/
+			   cursor: pointer;
+	    	}
+	    	.icon_Toggle{
+	    		position: absolute;
+			   	top: 18px;
+			   	left: 140px;
+			    margin-top: -8px;
+			    width: 50px;
+			    height: 50px;
+			    background-position: -5px -5px;
+			    /*border: 1px solid red;*/
+	    	}
+	    	.icon_Toggle:hover{
+	    		position: absolute;
+			   	top: 18px;
+			   	left: 140px;
+			    margin-top: -8px;
+			    width: 50px;
+			    height: 50px;
+			    background-position: -65px -5px;
+			    cursor: pointer;
+	    	}
+	    	.icon_Pause{
+	    		position: absolute;
+			   	top: 18px;
+			   	left: 140px;
+			    margin-top: -8px;
+			    width: 50px;
+			    height: 50px;
+			    background-position: -5px -65px;
+	    	}
+	    	.icon_Pause:hover{
+	    		position: absolute;
+			   	top: 18px;
+			   	left: 140px;
+			    margin-top: -8px;
+			    width: 50px;
+			    height: 50px;
+			    background-position: -65px -65px;
+	    	}
+	    	.icon_Next{
+	    		position: absolute;
+			   	top: 25px;
+			   	left: 205px;
+			    margin-top: -8px;
+			    width: 36px;
+			    height: 36px;
+			    background-position: -144px -143px;
+			   cursor: pointer;
+	    	}
+	    	.icon_Next:hover{
+	    		position: absolute;
+			   	top: 25px;
+			   	left: 205px;
+			    margin-top: -8px;
+			    width: 36px;
+			    height: 36px;
+			    background-position: -180px -143px;
+			    cursor: pointer;
+	    	}
+	    	#btn_controls{
+	    		/*border: 1px solid red;*/
+	    		width: 200px;
+	    		height: 80px;
+	    		position: absolute;
+	    		left: 1200px;
+	    		top: 0;
+	    		color: white;
+	    		
+	    	}
+	    	#volumeArea{
+	    		width: 16px;
+	    		height: 60px;
+	    		position: absolute;
+	    		top: -10px;
+	    		/*border: 1px solid red;*/
+	    	}
+	    	.icon_Volume{
+	    		position: absolute;
+			   	top: 45px;
+			   	left: 0px;
+			    margin-top: -8px;
+			    width: 16px;
+			    height: 18px;
+			    background-position: -64px -195px;
+			   cursor: pointer;
+	    	}
+	    	.icon_Volume:hover{
+	    		position: absolute;
+			   	top: 45px;
+			   	left: 0px;
+			    margin-top: -8px;
+			    width: 16px;
+			    height: 18px;
+			    background-position: -80px -195px;
+			   cursor: pointer;
+	    	}
+	    	.icon_Cycle{
+	    		position: absolute;
+			   	top: 35px;
+			   	left: 50px;
+			    margin-top: -8px;
+			    width: 16px;
+			    height: 14px;
+			    background-position: -64px -180px;
+			   cursor: pointer;
+	    	}
+	    	.icon_Cycle:hover{
+	    		position: absolute;
+			   	top: 35px;
+			   	left: 50px;
+			    margin-top: -8px;
+			    width: 16px;
+			    height: 14px;
+			    background-position: -80px -180px;
+			   cursor: pointer;
+	    	}
+	    	.icon_List{
+	    		position: absolute;
+			   	top: 32.5px;
+			   	left: 100px;
+			    margin-top: -8px;
+			    width: 60px;
+			    height: 20px;
+			    background-position: -0px -121px;
+			   cursor: pointer;
+	    	}
+	    	.icon_List:hover{
+	    		position: absolute;
+			   	top: 32.5px;
+			   	left: 100px;
+			    margin-top: -8px;
+			    width: 59px;
+			    height: 20px;
+			    background-position: -61px -121px;
+			   	cursor: pointer;
+	    	}
+	    	.icon_List:hover~span{
+	    		color: #009af3;
+	    	}
+	    	#listLength{
+	    		font-size: small;
+	    		position: absolute;
+	    		left: 138px;
+	    		top: 26px;
+	    	}
+	    	.icon_Volumebar{
+	    		position: absolute;
+			   	top: -22px;
+			   	left: -7.5px;
+			    margin-top: -8px;
+			    width: 16px;
+			    height: 16px;
+			    background-position: -235px -125px;
+			    z-index: 100;
+			    cursor: pointer;
+			    display: none; 
+	    	}
+	    	.bg_Volume{
+	    		position: absolute;
+			   	top: -115px;
+			   	left: -10px;
+			    margin-top: -8px;
+			    width: 30px;
+			    height: 115px;
+			    background-position: 0px 0px;
+			    z-index: 100;
+			    display: none; 
+	    	}
+	    	.volume_panel{
+	    		background-image: url(img/volume-panel.png);
+	    		background-repeat: no-repeat;
+	    	}
+	    	.icon_btn{
+	    		background-image: url(img/btn.png);
+	    		background-repeat: no-repeat;
+	    	}
+	    	.icon_playSmall{
+	    		position: absolute;
+			   	top: 17px;
+			   	left: 18px;
+			    margin-top: -8px;
+			    width: 14px;
+			    height: 14px;
+			    background-position: 0px -90px;
+	    	}
+	    	
+	    	#barContainer{
+	    		width: 5px;
+	    		height: 100px;
+	    		/*border: 1px solid black;*/
+	    		position: absolute;
+	    		top: -115px;
+	    		left: 2px;
+	    		overflow: hidden;
+	    		display: none;
+	    	}
+	    	#huiBar{
+	    		width: 4px;
+	    		height: 100px;
+	    		/*border: 1px solid gray;*/
+	    		position: absolute;
+	    		top: 0px;
+	    		left: -0.5px;
+	    		z-index: 100;
+	    		display: none;
+	    		cursor: pointer;
+	    	}
+	    	#lanBar{
+	    		width: 2px;
+	    		height: 100px;
+	    		/*border: 1px solid red;*/
+	    		background-color:#009af3;
+	    		border-radius:1px ;
+	    		position: absolute;
+	    		top: 100px;
+	    		left: 0.5px;
+	    		display: none;
+	    		z-index: 101;
+	    		cursor: pointer;
+	    	}
+	    	#song-singer{
+	    		width: 750px;
+	    		height: 20px;
+	    		/*border: 1px solid red;*/
+	    		position: absolute;
+	    		left: 350px;
+	    		top: 10px;
+	    		color: white;
+	    		font-size: 12px;
+	    		text-align: center;
+	    	}
+	    	#extendBar{
+	    		height: 80px;
+	    		width: 40px;
+	    		/*border: 1px solid red;*/
+	    		position: absolute;
+	    		left: 200px;
+	    		background-color: #2c323b;
+	    	}
+		</style>
+	</head>
+	<body>
+		<!--头部区域-->
+		<div id="headArea">
+			<div id="logoArea">
+				<img src="img/logo.png" />
+			</div>
+			<!--导航-->
+			<div id="daoHang">
+				<ul>
+					<li><a href="first.html">首页</a></li>
+					<li><a href="singerPage.html">歌手</a></li>
+					<li><a href="toplistPage.html">排行榜</a></li>
+					<li><a href="mvPage.html">MV</a></li>
+				</ul>
+			</div>
+			<!--导航---END-->
+		</div>
+		<!--头部区域---END-->
+		<div id="singerBgp">
+			<img />
+			<div>
+				
+			</div>
+			<span></span>
+		</div>
+		<div id="contentArea">
+			<h2>热门歌曲</h2>
+			<ul id="songlist-head">
+				<li>歌曲</li>
+				<li>歌手</li>
+				<li>专辑</li>
+				<li>播放/下载</li>
+			</ul>
+			<div id="playAll">
+				<i class="icon_playSmall list_menu"></i>
+				
+			</div>
+			<ul id="songList">	
+			</ul>
+		</div>
+		<!--播放器固定-->
+		<div id="MusicPlayer">
+			
+			<div id="coverArea">
+				<div id="song_Msg">
+					<span id="song-singer"></span>
+				</div>
+				<img src="img/blue.png" id="cover" />
+				<i class="icon_Prev icon_btn" id="btn_Prev" onclick="syq()"></i>
+				<i class="icon_Toggle icon_btn" id="btn_Toggle"></i>
+				<i class="icon_Next icon_btn" id="btn_Next" onclick="xyq()"></i>
+				<!--<img src="img/ks.jpg" id="bf" onclick="bf()"/>
+				<img src="img/zt.jpg" id="zt" onclick="zt()"/>
+				<img src="img/syq.png" id="syq" onclick="syq()"/>
+				<img src="img/xyq.png" id="xyq" onclick="xyq()"/>-->
+				<div id="btn_controls">
+					<div id="volumeArea">
+						<i class="icon_Volume icon_btn" id="btn_Volume"></i>
+					</div>
+					
+					<div id="volumeControls">
+						<i class="bg_Volume volume_panel"></i>
+						<i class="icon_Volumebar icon_btn" id="btn_Volumebar"></i>
+					</div>
+					<div id="barContainer">
+						<div id="huiBar"></div>
+						<div id="lanBar"></div>
+					</div>
+					<i class="icon_Cycle icon_btn" id="btn_List"></i>
+					<i class="icon_List icon_btn"></i>
+					<span id="listLength">0</span>
+					<div id="extendBar"></div>
+				</div>
+			</div>
+			<div id="container2">
+				<div id="hui"></div>
+				<div id="hong"></div>
+			</div>
+			
+			<div id="lan"></div>
+			<div id="bjTime"><p id="bjjd">00:00</p></div>
+			<div id="qbTime"><p id="qbjd">00:00</p></div>
+		</div>
+		<script src="//y.gtimg.cn/music/h5/player/player.js"></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+		<script>
+			//title滚动
+			var text=document.title
+			var timerID
+			function newtext() {
+				clearTimeout(timerID);                  
+				document.title=text.substring(1,text.length)+text.substring(0,1);
+				text=document.title.substring(0,text.length);
+				timerID = setTimeout("newtext()", 800);
+			}
+			$("body").load=newtext();
+			//初始化音乐播放组件
+			var player=new Player();
+			//获取cookie值
+			function getCookie(name){
+				var arr =document.cookie.match(new RegExp("(^|)"+name+"=([^;]*)(;|$)"));
+				if(arr !=null) return unescape(arr[2]); 
+				return null;
+			}
+			//alert(getCookie('name'));
+			var val=getCookie('name');
+			$("#singerBgp img").attr("src","https://y.gtimg.cn/music/photo_new/T001R300x300M000"+val+".jpg?max_age=2592000")
+			$.ajax({
+				type:"get",
+				url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&singermid='+val+'&order=listen&begin=0&num=80',
+				dataType:'jsonp',
+				jsonp: "jsonpCallback",
+				scriptCharset: 'GBK',//解决中文乱码
+				success:function(data) {
+					console.log(data);
+					$("#singerBgp span").html(data.data.singer_name);
+					var song_mid=[];
+					var album_mid=[];
+					var song_name=[];
+					var vid=[];
+					for (var i=0;i<data.data.list.length;i++) {
+						$("#songList").append("<li><span class='spanSongName_style'><i class='playGif'></i>"+data.data.list[i].musicData.songname+
+	        									  "<i class='icon_only list_menu'></i><i class='icon_HQ list_menu'></i><i class='icon_mv list_menu'></i><i class='vip'></i></span><span class='spanName_style'>"+data.data.singer_name+
+	        									  "</span><span class='spanAlbum_style'>《"+data.data.list[i].musicData.albumname+
+	        									  "》</span><span class='spanTime'><i class='icon_play list_menu'></i><i class='icon_down list_menu'></i></span></li>");
+	        			song_mid.push(data.data.list[i].musicData.songmid);
+	        			album_mid.push(data.data.list[i].musicData.albummid);
+	        			song_name.push(data.data.list[i].musicData.songname);
+	        			if (data.data.list[i].musicData.pay.payplay==1) {
+	        				$(".vip:eq("+i+")").addClass("icon_vip");
+	        				$(".vip:eq("+i+")").addClass("list_menu")
+	        			}
+	        			if (data.data.list[i].vid!=null) {
+	        				vid.push(data.data.list[i].vid.Fvid);
+	        				
+	        			}if (data.data.list[i].vid==null) {
+	        				//alert(i)
+	        				$(".icon_mv:eq("+i+")").removeClass("icon_mv");
+	        			}
+	        				
+	        			
+	        			
+					}
+					$("#songList .icon_play").click(function(){
+	        				//alert($("#songList .icon_play").index(this));
+	        				indexnum="";
+	        				player.play(song_mid[$("#songList .icon_play").index(this)]);
+	        				$("#cover").attr("src","https://y.gtimg.cn/music/photo_new/T002R300x300M000"+album_mid[$("#songList .icon_play").index(this)]+".jpg?max_age=2592000");
+	        				$("#song-singer").html(song_name[$("#songList .icon_play").index(this)]+"---"+data.data.singer_name);
+	        				var indexnum=$("#songList .icon_play").index(this);
+	        				player.on("error",function  () {
+        						//alert("当前播放的是需付费歌曲！");
+        						//alert(indexnum);
+        						document.getElementsByTagName("audio")[0].setAttribute("src","http://ws.stream.qqmusic.qq.com/C100"+song_mid[indexnum]+".m4a?fromtag=0&guid=0")
+        					});
+        					
+	        				
+	        		});
+	        		$(".icon_mv").click(function() {
+	        			//alert("1");
+	        			//alert(vid)
+	        			function setCookie(mvid,value){
+						    	var Days = 3; 
+						    	var exp　= new Date();
+						    	exp.setTime(exp.getTime() +Days*24*60*60*1000);
+								document.cookie = ""+mvid +"="+ escape (value) + ";expires=" + exp.toGMTString();
+							}
+					        setCookie('mvid',vid[$(".icon_mv").index(this)]);
+							location.href = "test3.html";
+	        		});
+				},
+				error:function(e) {
+					console.log('error');
+				}
+			});
+			
+			//唱片转动
+			player.onplay=function(){
+				document.getElementById("cover").style.animationPlayState="running";
+				$("#btn_Toggle").removeClass("icon_Toggle");
+				$("#btn_Toggle").addClass("icon_Pause");
+				
+				
+			}
+			player.onpause=function(){
+				document.getElementById("cover").style.animationPlayState="paused";
+				$("#btn_Toggle").removeClass("icon_Pause");
+				$("#btn_Toggle").addClass("icon_Toggle");
+			}	
+			$("#btn_Toggle").click(function(){
+				player.toggle();
+			});
+			function xyq() {
+				player.playNext();
+				k++;
+				//console.log(k);
+				$("#cover").attr("src",songMsg_Cover[k]);
+				$("#song-singer").html(songMsg_Name[k]+"---"+songMsg_singer[k]);
+			}
+			function syq() {
+				player.playPrev();
+				k--;
+				if (k<0) {
+					k=songMsg_Cover.length-1;
+				}
+				$("#cover").attr("src",songMsg_Cover[k]);
+				$("#song-singer").html(songMsg_Name[k]+"---"+songMsg_singer[k]);
+			}
+			//暂停
+			function zt () {
+				player.pause();
+				
+			}
+			//播放
+			function bf () {
+				player.play();
+				
+			}
+			var hongbar=document.getElementById("hong");
+			var huibar=document.getElementById("hui");
+			player.ontimeupdate=function(){
+				var lanbar=document.getElementById("lan")
+				hongbar.style.left=-800+player.currentTime/player.duration*800+"px";
+				lanbar.style.left=395+player.currentTime/player.duration*800+"px";
+				
+				document.getElementById("bjjd").innerHTML=
+				geshi(parseInt(player.currentTime/60))+":"+
+				geshi(parseInt(player.currentTime%60));
+				document.getElementById("qbjd").innerHTML=
+				geshi(parseInt(player.duration/60))+":"+
+				geshi(parseInt(player.duration%60))
+			}
+			function geshi (n) {
+				if (n<10) {
+					return "0"+n
+				} else{
+					return n;
+				}
+			}
+			//鼠标点击进度条跳转到播放位置
+			huibar.onclick=function(e) {
+				//alert("1")
+				player.currentTime=e.offsetX/800*player.duration;
+			}
+			hongbar.onclick=function(e) {
+				player.currentTime=(e.offsetX+parseInt(hongbar.style.left))/800*player.duration;
+				
+			}
+			//音量控制
+			$("#volumeArea,.bg_Volume,.icon_Volumebar,#barContainer,#lanBar,#huiBar").mouseover(function() {
+				$(".bg_Volume").css("display","block");
+				$(".icon_Volumebar").css("display","block");
+				$("#barContainer").css("display","block");
+				$("#huiBar").css("display","block");
+				$("#lanBar").css("display","block");
+				$(this).mouseout(function() {
+					$(".bg_Volume").css("display","none");
+					$("#btn_Volumebar").css("display","none");
+					$("#barContainer").css("display","none");
+					$("#huiBar").css("display","none");
+					$("#lanBar").css("display","none");
+				});
+			});
+			var dy=document.getElementById("lanBar");
+			
+			$("#huiBar").click(function(e) {
+				//alert(100-e.offsetY);
+				$("#lanBar").css("top",e.offsetY);
+				$(".icon_Volumebar").css("top",e.offsetY-120+'px');
+				var numVol=(100-e.offsetY)/100;
+				document.getElementsByTagName("audio")[0].volume=numVol.toFixed(1);
+				//alert(document.getElementsByTagName("audio")[0].volume);
+			});
+			
+			$("#lanBar").click(function(e) {
+				//alert(e.offsetY+";"+parseInt(dy.style.top));
+				$("#lanBar").css("top",(e.offsetY+parseInt(dy.style.top))+"px");
+				$(".icon_Volumebar").css("top",-150+(e.offsetY+parseInt(dy.style.top))+'px');
+				var numVol=(100-e.offsetY)/100;
+				document.getElementsByTagName("audio")[0].volume=numVol.toFixed(1);
+			});
+			//播放器伸缩
+			var isExtend=true;
+			
+			$("#extendBar").click(function() {
+				isExtend=!isExtend;
+				if (isExtend==true) {
+					$("#MusicPlayer").css("left","0");
+				} 
+				if (isExtend==false) {
+					$("#MusicPlayer").css("left","-1450px");
+				}
+				//alert(isExtend)
+				
+			});
+			
+			
+		</script>
+	</body>
+</html>

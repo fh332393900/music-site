@@ -1,0 +1,1235 @@
+<!--
+	***********
+	*毕业设计-----《基于ajax技术音乐网站的设计与实现》
+	*fenghang
+	*email：332393900@qq.com
+	***********
+	-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="img/logo.png" type="image/x-icon">
+		<title>音乐-高质量音乐在线聆听，下载</title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<style>
+			body,html{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: white;
+			}
+			#contentArea{
+				margin-top: 2%;
+				/*border: 1px solid red;*/
+				width: 80%;
+				margin-left: 10%;
+				height: 2200px;
+			}
+			/*搜索框*/
+			#searchArea{
+				margin-top: 1%;
+			}
+			#searchArea input{
+    			width: 60%;
+    			height: 40px;
+    			margin-left: 20%;
+    			border: 2px solid white;
+    			box-shadow: 1px 1px 5px black;
+    			font-size: 14px;
+    			color: dimgray;
+    			border-radius: 5px;
+    			outline-color:#009af3;
+    			/*border: 1px red solid;*/
+    		}
+    		#search{
+    			font-family:"poppin,Tahoma,Arial,微软雅黑,sans-serif" ;
+    			background-color: orangered;
+    			border: 0px;
+    			width: 60px;
+    			height: 40px;
+    			border-radius: 3px;
+    			color: white;
+    			position: relative;
+    			left: -62px;
+    			top: 1px;
+    			font-size: 1.2em;
+    			
+    		}
+    		#search:hover{
+    			background-color: lightcoral;
+    			transition: all 1s;
+    			cursor: pointer;
+    		}
+    		
+    		/*播放器样式*/
+    		
+    		#MusicPlayer{
+    			/*border: 1px solid red;*/
+    			width: 100%;
+    			height: 80px;
+    			position: fixed;
+    			left: -1450px;
+    			bottom: 0%;
+    			transition: all 1s;
+    			background-color: rgba(0,0,0,0.8);
+    			background-image: ;
+    			overflow: hidden;
+    		}
+    		#coverArea{
+    			
+    			width: 20%;
+    			height: 90%;
+    			position: relative;
+    			left: 5%;
+    			top: 5%;
+    		}
+    		/*歌曲封面*/
+    		#cover{
+    			position: absolute;
+    			height: 100%;
+    			border-radius: 50%;
+    			box-shadow: 0 0 5px black;
+    			animation: spin 18s infinite linear;
+    			animation-play-state: paused;
+    			cursor: pointer;
+    			
+    		}
+    		@keyframes spin{
+	    		from{transform: rotate(0deg);}
+	    		to{transform: rotate(360deg);}
+	    	}
+	    	#zt{
+	    		height: 50%;
+	    		position: absolute;
+	    		left: 160px;
+	    		top: 30%;
+	    		display: none;
+	    	}
+	    	#bf{
+
+	    		height: 50%;
+	    		position: absolute;
+	    		left: 160px;
+	    		top: 30%;
+	    		
+	    	}
+	    	#syq{
+	    		height: 60%;
+	    		position: absolute;
+	    		left: 100px;
+	    		top: 25%;
+	    	}
+	    	#xyq{
+	    		height: 60%;
+	    		position: absolute;
+	    		left: 220px;
+	    		top: 25%;
+	    	}
+	    	/*进度条*/
+	    	#container2{
+	    		width: 800px;
+	    		height: 5px;
+	    		border-radius:20px ;
+	    		/*border: 1px solid red;*/
+	    		position: absolute;
+	    		top: 40px;
+	    		left: 400px;
+	    		overflow: hidden;
+	    	}
+	    	#container2 #hui{
+	    		width: 800px;
+	    		height: 5px;
+	    		background-color: darkgrey;
+	    		cursor: pointer;
+	    	}
+	    	#container2 #hong{
+	    		width: 800px;
+	    		height: 5px;
+	    		background-color: white;
+	    		position: absolute;
+	    		left: -800px;
+	    		top: 0;
+	    		cursor: pointer;
+	    	}
+	    	#lan{
+	    		width: 10px;
+	    		height: 10px;
+	    		border-radius: 50%;
+	    		background-color: white;
+	    		position: absolute;
+	    		top: 37.5px;
+				left: 395px;
+	    		opacity: 0.8;
+	    		box-shadow: gray 0 0 10px;
+	    	}
+	    	#bjTime{
+	    		position: absolute;
+	    		left: 350px;
+	    		top: 33px;
+	    		font-size: small;
+	    		color: #eeeeee;
+	    		display: inline;
+	    	}
+	    	#qbTime{
+	    		position: absolute;
+	    		left: 1210px;
+	    		top: 33px;
+	    		font-size: small;
+	    		color: #eeeeee;
+	    		
+	    	}
+	    	
+	    	/*头部样式,导航栏*/
+	    	#headArea{
+	    		width: 100%;
+	    		height: 80px;
+	    		/*border: 1px solid red;*/
+	    		
+	    		position: relative;
+	    		background-color: rgba(0,0,0,0.8);
+	    		
+	    	}
+	    	#logoArea{
+	    		width: 10%;
+	    		height: 100%;
+	    		/*border: 1px solid blueviolet;*/
+	    		margin-left: 10%;
+	    	}
+	    	#logoArea img{
+	    		height: 80%;
+	    		position: absolute;
+	    		top: 10%;
+	    		left: 15%;
+	    	}
+	    	#daoHang{
+	    		width: 50%;
+	    		height: 100%;
+	    		/*border: 1px solid red;*/
+	    		color: white;
+	    		position: absolute;
+	    		left: 20%;
+	    		top: 0;
+	    		
+	    	}
+	    	@font-face {
+	    		font-family:poppin;
+	    		src: url("https://y.gtimg.cn/mediastyle/yqq/font/poppin.ttf?max_age=2592000");
+	    	}
+	    	#daoHang li{
+	    		height: 100px;
+	    		width: 100px;
+	    		
+	    		list-style-type: none;
+	    		float: left;
+	    		text-align: center;
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		font-size: 18px;
+	    		vertical-align: middle;
+	    		position: relative;
+	    		
+	    	}
+	    	#daoHang a{
+	    		width: 100px;
+	    		height: 80px;
+	    		display: block;
+	    		color: white;
+	    		position: relative;
+	    		line-height: 90px;
+	    		
+	    		
+	    	}
+	    	#daoHang a:hover{
+	    		background-color: #009af3;
+	    		color: white;
+	    		cursor: pointer;
+	    		transition: all 0.5s;
+	    	}
+	    	
+	    	/*新歌首发*/
+	    	#newSongArea{
+	    		position: relative;
+	    		top: 30px;
+	    		width: 100%;
+	    		height: 50px;
+	    		/*border: 1px red solid;*/
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		color: black;
+	    		font-size: 28px;
+	    		text-align: center;
+	    		
+	    	}
+	    	.upData_time{
+	    		position: absolute;
+	    		left: 80%;
+	    		top: 10px;
+	    		width: 150px;
+	    		height: 20px;
+	    		/*border: 1px solid red;*/
+	    		color: dimgray;
+	    		font-size: 12px;
+	    	}
+	    	#newSongList{
+	    		position: relative;
+	    		top: 30px;
+	    		width: 100%;
+	    		height: 400px;
+	    		overflow: hidden;
+	    		/*border: 1px solid blue;*/
+	    		
+	    	}
+	    	#list1{
+	    		width: 100%;
+	    	}
+	    	#list1 ul li{
+	    		margin: 0;
+	    		padding: 0;
+	    		position: absolute;
+	    		list-style: none;
+	    		height: 110px;
+	    		width: 33.333%;
+	    		/*border: 1px solid black;*/
+	    		display: inline-block;
+	    		color: black;
+	    		
+	    	}
+	    	#list1 ul li:nth-of-type(2){
+	    		left: 33.333%;
+	    	}
+	    	#list1 ul li:nth-of-type(3){
+	    		left: 66.666%;
+	    	}
+	    	#list1 ul li:nth-of-type(4){
+	    		top: 110px;
+	    	}
+	    	#list1 ul li:nth-of-type(5){
+	    		top: 110px;
+	    		left: 33.333%;
+	    	}
+	    	#list1 ul li:nth-of-type(6){
+	    		top: 110px;
+	    		left: 66.666%;
+	    	}
+	    	#list1 ul li:nth-of-type(7){
+	    		top: 220px;
+	    	}
+	    	#list1 ul li:nth-of-type(8){
+	    		top: 220px;
+	    		left: 33.333%;
+	    	}
+	    	#list1 ul li:nth-of-type(9){
+	    		top: 220px;
+	    		left: 66.666%;
+	    	}
+	    	
+	    	
+	    	
+	    	#list1 li img{
+	    		width: 90px;
+	    		height: 90px;
+	    		
+	    	}
+	    	#list1 li img:hover{
+	    		transform: scale(1.2);
+	    		transition: all 1s;
+	    		cursor: pointer;
+	    		
+	    	}
+	    	#list1 p{
+	    		display: inline;
+	    	}
+	    	#list1 p:hover{
+	    		color: #31c27c;
+	    		cursor: pointer;
+	    	}
+	    	#list1 li .list-songName{
+	    		position: absolute;
+	    		top: 30px;
+	    		left: 100px;
+	    		font-family: "微软雅黑";
+	    		font-size: 16px;
+	    		/*display: inline;*/
+	    		
+	    	}
+	    	
+	    	#list1 .list-songer{
+	    		position: absolute;
+	    		top: 55px;
+	    		left: 100px;
+	    		color: gray;
+	    		font-family: "微软雅黑";
+	    		font-size: 14px;
+	    	}
+	    	 #list1 .list-time{
+	    		position: absolute;
+	    		top: 40px;
+	    		left: 80%;
+	    		color: gray;
+	    		font-family: "微软雅黑";
+	    		font-size: 14px;
+	    		
+	    	}
+	    	#list1 .overFlow{
+	    		width: 90px;
+	    		height: 90px;
+	    		/*border: 3px solid yellow;*/
+	    		overflow: hidden;
+	    	}
+	    	
+	    	#peakListHead{
+	    		position: relative;
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		color: black;
+	    		font-size: 28px;
+	    		text-align: center;
+	    		/*border: 2px solid goldenrod;*/
+	    	}
+	    	#peakList{
+	    		width: 80%;
+	    		height: 400px;
+	    		/*border: 1px solid black;*/
+	    		position: absolute;
+	    		overflow: hidden;
+	    	}
+	    	#peakList img{
+	    		width: 200px;
+	    		position: absolute;
+	    		
+	    	}
+	    	#peakList img:hover{
+	    		transform: scale(1.1);
+	    		transition: all 1s;
+	    		cursor: pointer;
+	    	}
+	    	#peakList div{
+	    		width: 200px;
+	    		height: 350px;
+	    		/*border: 1px solid red;*/
+	    		position: absolute;
+	    		overflow: hidden;
+	    	}
+	    	#peakList div:nth-of-type(1){
+	    		top: 30px;
+	    		left: 40px;
+	    	}
+	    	#peakList div:nth-of-type(2){
+	    		top: 30px;
+	    		left: 270px;
+	    	}
+	    	#peakList div:nth-of-type(3){
+	    		top: 30px;
+	    		left: 500px;
+	    	}
+	    	#peakList div:nth-of-type(4){
+	    		top: 30px;
+	    		left: 730px;
+	    	}
+	    	#peakList div:nth-of-type(5){
+	    		top: 30px;
+	    		left: 960px;
+	    	}
+	    	#peakList div:nth-of-type(6){
+	    		top: 30px;
+	    		left: 40px;
+	    	}
+	    	#peakList div:nth-of-type(7){
+	    		top: 30px;
+	    		left: 270px;
+	    	}
+	    	#peakList div:nth-of-type(8){
+	    		top: 30px;
+	    		left: 500px;
+	    	}
+	    	#peakList div:nth-of-type(9){
+	    		top: 30px;
+	    		left: 730px;
+	    	}
+	    	#peakList div:nth-of-type(10){
+	    		top: 30px;
+	    		left: 960px;
+	    	}
+	    	
+	    	
+	    	.peakName{
+	    		text-align: left;
+	    		position: absolute;
+	    		
+	    	}
+	    	.peakTitle{
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		font-size: 24px;
+	    		color: white;
+	    		position: absolute;
+	    		top: 10px;
+	    		left: 60px;
+	    	}
+	    	.commnList{
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		font-size: 12px;
+	    		color: white;
+	    		
+	    		letter-spacing: 2px;	
+	    	}
+	    	.peakName ul{
+	    		margin-top: 90px;
+	    	}
+	    	.peakName li{
+	    		margin-left: 15px;
+	    		margin-top: 20px;
+	    		cursor: pointer;
+	    	}
+	    	#MVHead{
+	    		position: relative;
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		color: black;
+	    		font-size: 28px;
+	    		top: 400px;
+	    		text-align: center;
+	    		/*border: 1px solid red;*/
+	    	}
+	    	#MVList{
+	    		width: 100%;
+	    		height: 400px;
+	    		/*border: 1px solid black;*/
+	    		position: relative;
+	    		top: 420px;
+	    	}
+	    	#MVList ul li{
+	    		width: 200px;
+	    		height: 170px;
+	    		position: absolute;
+	    		/*border: 1px solid red;*/
+	    		
+	    		
+	    	}
+	    	#MVList ul li:nth-of-type(1){
+	    		left: 50px;
+	    	}
+	    	#MVList ul li:nth-of-type(2){
+	    		left: 280px;
+	    	}
+	    	#MVList ul li:nth-of-type(3){
+	    		left: 510px;
+	    	}
+	    	#MVList ul li:nth-of-type(4){
+	    		left: 740px;
+	    	}
+	    	#MVList ul li:nth-of-type(5){
+	    		left: 970px;
+	    	}
+	    	#MVList ul li:nth-of-type(6){
+	    		left: 50px;
+	    		top: 170px;
+	    	}
+	    	#MVList ul li:nth-of-type(7){
+	    		left: 280px;
+	    		top: 170px;
+	    	}
+	    	#MVList ul li:nth-of-type(8){
+	    		left: 510px;
+	    		top: 170px;
+	    	}
+	    	#MVList ul li:nth-of-type(9){
+	    		left: 740px;
+	    		top: 170px;
+	    	}
+	    	#MVList ul li:nth-of-type(10){
+	    		left: 970px;
+	    		top: 170px;
+	    	}
+	    	#MVList .MVImg-content{
+	    		width: 200px;
+	    		height: 110px;
+	    		/*border: 1px solid red;*/
+	    		overflow: hidden;
+	    	}
+	    	#MVList ul li img{
+	    		width: 100%;
+	    	}
+	    	#MVList ul li img:hover{
+	    		transform: scale(1.1);
+	    		transition: all 1s;
+	    		cursor: pointer;
+	    	}
+	    	.icon_new{
+				position: absolute;
+			   	margin-left: 5px;
+			    margin-top: -8px;
+			    width: 30px;
+			    height: 25px;
+			    background-position: -530px -480px;
+			}
+	    	.list_menu{
+				background-image: url(img/icon_splice.png);
+			}
+			#tp-weather-widget{
+				position: absolute;
+				top: 25px;
+				right: 10px;
+				color: white;
+				z-index: 100;
+			}
+			#extendBar{
+	    		height: 80px;
+	    		width: 40px;
+	    		position: absolute;
+	    		left: 1480px;
+	    		top: 0;
+	    		background-color: #2c323b;
+	    	}
+		</style>
+	</head>
+	<body onload="newtext()">
+		<div id="tp-weather-widget"></div>
+		<script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+		<script>tpwidget("init", {
+		    "flavor": "slim",
+		    "location": "WX4FBXXFKE4F",
+		    "geolocation": "enabled",
+		    "language": "zh-chs",
+		    "unit": "c",
+		    "theme": "chameleon",
+		    "container": "tp-weather-widget",
+		    "bubble": "enabled",
+		    "alarmType": "badge",
+		    "color": "#FFFFFF",
+		    "uid": "U485367323",
+		    "hash": "5ac870bc084415c97cda58b8cc150112"
+		});
+		tpwidget("show");</script>
+		<!--头部区域-->
+		<div id="headArea">
+			<div id="logoArea">
+				<img src="img/logo.png" />
+			</div>
+			<!--导航-->
+			<div id="daoHang">
+				<ul>
+					<li><a href="first.html">首页</a></li>
+					<li><a href="singerPage.html">歌手</a></li>
+					<li><a href="toplistPage.html">排行榜</a></li>
+					<li><a href="mvPage.html">MV</a></li>
+				</ul>
+			</div>
+			<!--导航---END-->
+		</div>
+		<!--头部区域---END-->
+		<!--主体内容区域-->
+		<div id="contentArea">
+			<!--搜索框-->
+			<div id="searchArea">
+				<input type="text" id="searchWords" placeholder="搜索音乐、MV、歌手"/>
+				<a href="searchPage.html" target="_blank"><button id="search">搜索</button></a>
+			</div>
+			<!--轮播图-->
+			<div class="main_banner">
+				<div class="main_banner_wrap">
+					<div class="main_banner_box" id="m_box">
+						<a href="javascript:void(0)" class="banner_btn js_pre">
+							<span class="banner_btn_arrow"><i></i></span>
+						</a>
+						<a href="javascript:void(0)" class="banner_btn btn_next js_next">
+							<span class="banner_btn_arrow"><i></i></span>
+						</a>
+						<ul>
+							<li id="imgCard0">
+								<a href=""><span style="opacity:0;"></span></a>      
+								<img src="https://y.gtimg.cn/music/common//upload/t_musicmall_focus/321851.jpg?max_age=2592000" alt="">
+								<p style="bottom:0">周杰伦粉丝版MV</p>
+							</li> 
+							<li id="imgCard1">
+								<a href=""><span style="opacity:0.4;"></span></a>      
+								<img src="https://y.gtimg.cn/music/common//upload/t_musicmall_focus/352825.jpg?max_age=2592000" alt="">
+								<p>乐侃有声节目第二期</p>
+							</li> 
+							<li id="imgCard2">
+								<a href=""><span style="opacity:0.4;" ></span></a>        
+								<img src="https://y.gtimg.cn/music/common//upload/t_musicmall_focus/353949.jpg?max_age=2592000" alt="">
+								<p>乐见大牌：”荣“耀之声，”维“我独尊</p>
+							</li> 
+							<li id="imgCard3">
+								<a href=""><span style="opacity:0.4;"></span></a>      
+								<img src="https://y.gtimg.cn/music/common//upload/t_musicmall_focus/331374.jpg?max_age=2592000" alt="">
+								<p>王力宏四年心血结晶</p>
+							</li> 
+							<li id="imgCard4">
+								<a href=""><span style="opacity:0.4;"></span></a>      
+								<img src="https://y.gtimg.cn/music/common//upload/t_musicmall_focus/354365.jpg?max_age=2592000" alt="">
+								<p>火箭少女101</p>
+							</li> 
+						</ul>
+						<!--火狐倒影图层-->
+						<p id="rflt"></p>
+						<!--火狐倒影图层-->
+					</div>
+					<!--序列号按钮-->
+					<div class="btn_list">
+						<span class="curr"></span><span></span><span></span><span></span><span></span>        
+					</div>
+				</div>
+			</div>
+			<!--轮播图---END-->
+			
+			<!--新歌首发-->
+			<div id="newSongArea">
+				<p>新歌首发</p><span class="upData_time"></span>
+			</div>
+			<div id="newSongList">
+				<div>
+					
+				</div>
+				<div id="list1">
+					<ul>
+						<li>
+							
+							<div class="overFlow">
+								
+							</div>
+							<p id="list-songName" class="list-songName">
+								无药可救
+								
+							</p>
+							
+							<p id="list-songer" class="list-songer">张杰</p>
+							<p id="list-time" class="list-time">03：30</p>
+						</li>
+						<li>
+							<div class="overFlow">
+								
+							</div>
+							
+							<p id="list-songName" class="list-songName">
+								时间停了
+							</p>
+							<p id="list-songer" class="list-songer">鹿晗</p>
+							<p id="list-time" class="list-time">03：47</p>
+						</li>
+						<li>
+							<div class="overFlow">
+								
+							</div>
+							<!--<img src="http://i.gtimg.cn/music/photo/mid_album_90/e/c/000Aitsu1m4Aec.jpg"/>-->
+							<p id="list-songName" class="list-songName">
+								时间停了
+							</p>
+							
+							<p id="list-songer" class="list-songer">鹿晗</p>
+							<p id="list-time" class="list-time">03：47</p>
+						</li>
+						<li>
+							<div class="overFlow"></div>
+							<p id="list-songName" class="list-songName"></p>
+							<p class="list-songer"></p>
+							<p class="list-time"></p>
+							<!--<img src="http://i.gtimg.cn/music/photo/mid_album_90/e/c/000Aitsu1m4Aec.jpg"/>-->
+						
+						</li>
+						<li>
+							<div class="overFlow"></div>
+							<p class="list-songName"></p>
+							<p class="list-songer"></p>
+							<p class="list-time"></p>
+							<!--<img src="http://i.gtimg.cn/music/photo/mid_album_90/e/c/000Aitsu1m4Aec.jpg"/>-->
+							
+						</li>
+						<li>
+							<div class="overFlow"></div>
+							<p class="list-songName"></p>
+							<p class="list-songer"></p>
+							<p class="list-time"></p>
+							
+							
+						</li>
+						<li>
+							<div class="overFlow"></div>
+							<p class="list-songName"></p>
+							<p class="list-songer"></p>
+							<p class="list-time"></p>
+						</li>
+						<li>
+							<div class="overFlow"></div>
+							<p class="list-songName"></p>
+							<p class="list-songer"></p>
+							<p class="list-time"></p>
+						</li>
+						<li>
+							<div class="overFlow"></div>
+							<p class="list-songName"></p>
+							<p class="list-songer"></p>
+							<p class="list-time"></p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--新歌首发结束-->
+			
+			<!--排行榜--巅峰榜-->
+			<div id="peakListHead">
+					<p>排行榜</p>
+			</div>
+			<div id="peakList">
+				<div><img src="img/peak1.png"></div>
+				<div><img src="img/peak2.png"></div>
+				<div><img src="img/peak3.png"></div>
+				<div><img src="img/peak4.png"></div>
+				<div><img src="img/peak5.png"></div>
+				
+				<div class="peakName">
+						<p class="peakTitle">流行榜</p>
+						<span id="popList" class="commnList"><ul></ul></span>
+				</div>
+				<div class="peakName" >
+						<p class="peakTitle">内地榜</p>
+						<span id="CnList" class="commnList"><ul></ul></span>
+				</div>
+				<div class="peakName">
+						<p class="peakTitle">欧美榜</p>
+						<span id="EuList" class="commnList"><ul></ul></span>
+				</div>
+				<div class="peakName">
+						<p class="peakTitle">新歌榜</p>
+						<span id="NewList" class="commnList"><ul></ul></span>
+				</div>
+				<div class="peakName">
+						<p class="peakTitle">韩国榜</p>
+						<span id="KoreaList" class="commnList"><ul></ul></span>
+				</div>
+			</div>
+			<!--排行榜--巅峰榜END-->
+			
+			<!--MV----开始-->
+			<div id="MVHead">
+				<p>精选MV</p>
+			</div>
+			<div id="MVList">
+				<ul>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/common/upload/t_mv_latest_rec/363788.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/common/upload/uploadt_mv_recommend_conf/364234.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/common/upload/t_mv_latest_rec/363830.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/common/upload/t_mv_latest_rec/324334.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/photo_new/T015R640x360M1010048EcvB32gnfy.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/photo_new/T015R640x360M1010048EcvB32gnfy.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/common/upload/uploadt_mv_recommend_conf/364211.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/common/upload/t_mv_latest_rec/362521.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/common/upload/t_mv_latest_rec/362523.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+					<li>
+						<div class="MVImg-content">
+							<a><img src="https://y.gtimg.cn/music/photo_new/T015R640x360M1010015Fg4N2TjtcH.jpg?max_age=2592000"></a>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		
+		<!--播放器固定-->
+		<div id="MusicPlayer">
+			<audio></audio>
+			<div id="coverArea">
+				<img src="img/blue.png" id="cover" />
+				<img src="img/ks.jpg" id="bf" onclick="bf()"/>
+				<img src="img/zt.jpg" id="zt" onclick="zt()"/>
+				<img src="img/syq.png" id="syq" onclick="syq()"/>
+				<img src="img/xyq.png" id="xyq" onclick="xyq()"/>
+			</div>
+			<div id="container2">
+				<div id="hui"></div>
+				<div id="hong"></div>
+				
+			</div>
+			<div id="lan"></div>
+			<div id="bjTime"><p id="bjjd">00:00</p></div>
+			<div id="qbTime"><p id="qbjd">00:00</p></div>
+			<div id="extendBar"></div>
+		</div>
+		<script src="//y.gtimg.cn/music/h5/player/player.js"></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+		<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+		<script type="text/javascript" src="js/main.js"></script>	
+		<script>
+			//title滚动
+			var text=document.title
+			var timerID
+			function newtext() {
+				clearTimeout(timerID)                  
+				document.title=text.substring(1,text.length)+text.substring(0,1)
+				text=document.title.substring(0,text.length)
+				timerID = setTimeout("newtext()", 800);
+			}
+			
+			//初始化音乐播放组件
+			var player=new Player();
+			console.log(player instanceof Object)
+			//参数配置
+			var params = {
+   				loop:true
+			};
+			//获取轮播图数据
+			$.ajax({
+				url:'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&platform=h5&uin=0&needNewCode=1',
+				type:"get",
+	          dataType:'jsonp',
+	          jsonp: "jsonpCallback",
+	          scriptCharset: 'GBK',//解决中文乱码
+	          success:function(data) {
+	          	$("#imgCard0 img").attr("src",data.data.slider[0].picUrl);
+	          	$("#imgCard1 img").attr("src",data.data.slider[1].picUrl);
+	          	$("#imgCard2 img").attr("src",data.data.slider[2].picUrl);
+	          	$("#imgCard3 img").attr("src",data.data.slider[3].picUrl);
+	          	$("#imgCard4 img").attr("src",data.data.slider[4].picUrl);
+	          	
+	          	$("#imgCard0 p").attr("src",data.data.slider[0].picUrl);
+	          	$("#imgCard1 p").attr("src",data.data.slider[1].picUrl);
+	          	$("#imgCard2 p").attr("src",data.data.slider[2].picUrl);
+	          	$("#imgCard3 p").attr("src",data.data.slider[3].picUrl);
+	          	$("#imgCard4 p").attr("src",data.data.slider[4].picUrl);
+	          	
+	          },
+	          error:function(e) {
+	          	console.log('error')
+	          }
+			})
+			
+			
+			
+			
+			//ajax调用歌曲id接口
+			function formatterDateTime() {
+		  			var date=new Date()
+		  			var month=date.getMonth() + 1
+		        	var datetime = date.getFullYear()
+		                + ""// "年"
+		                + (month >= 10 ? month : "0"+ month)
+		                + ""// "月"
+		                + (date.getDate() < 10 ? "0" + date.getDate() : date
+		                        .getDate())
+		                + ""
+		                + (date.getHours() < 10 ? "0" + date.getHours() : date
+		                        .getHours())
+		                + ""
+		                + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date
+		                        .getMinutes())
+		                + ""
+		                + (date.getSeconds() < 10 ? "0" + date.getSeconds() : date
+		                        .getSeconds());
+		        return datetime;
+		    }
+			//搜索框
+			
+			/*
+			 * 
+			 */
+			
+			document.onkeydown=function(event){
+	            var e = event || window.event || arguments.callee.caller.arguments[0];           
+	             if( e && e.keyCode==13){ 
+	                 //alert("1")
+	                 
+	            }
+	        }; 
+			var searchWords;
+			$("#search").click(function(){
+				
+				searchWords=document.getElementById("searchWords").value;
+				//alert(searchWords);
+				function setCookie(name,value){
+					var Days = 30; 
+					var exp　= new Date();
+					exp.setTime(exp.getTime() +Days*24*60*60*1000);
+					document.cookie = ""+name +"="+ escape (value) + ";expires=" + exp.toGMTString();
+				}
+				setCookie('name',searchWords);
+				location.href = "searchPage.html";
+			});
+			/*榜行榜id
+			3=欧美
+			4=流行榜
+			5=内地
+			6=港台
+			16=韩国
+			17=日本
+			26=热歌
+			27=新歌
+			28=网络歌曲
+			32=音乐人
+			36=K歌金曲
+			*/
+			
+			/*
+			 * 新歌首发
+			 * 
+			 */
+			$.ajax({
+    			type: 'post',
+    			url: 'http://route.showapi.com/213-4',
+   	 			dataType: 'json',
+    			data: {
+        			"showapi_timestamp": formatterDateTime(),
+        			"showapi_appid": '76001', //这里需要改成自己的appid
+        			"showapi_sign": 'c99ee88e33f344eaa5ea211bd2e12445',  //这里需要改成自己的应用的密钥secret
+        			"topid":"27"
+
+    			},
+    			error: function(XmlHttpRequest, textStatus, errorThrown) {
+        			alert("操作失败2!");
+    			},
+    			success: function(result) {
+        			//console.log(result) //console变量在ie低版本下不能用
+        			//alert(result.showapi_res_code);
+        			//alert(result.showapi_res_body.pagebean.songlist.length);
+        			$(".upData_time").html("更新日期："+result.showapi_res_body.pagebean.update_time);
+        			var songArr=[];
+        			var albumpicArr=[];
+        			var songName=[];
+        			var albumpicsmall=[];
+        			var singerName=[];
+        			var songTime=[];//秒为单位
+        			var songNamePeak=[];
+        			//li添加榜单----9首
+        			$("#list1 li div").append("<img/>");
+        			for (var i=0;i<=8;i++) {
+        				songArr.push(result.showapi_res_body.pagebean.songlist[i].songid);
+        				albumpicArr.push(result.showapi_res_body.pagebean.songlist[i].albumpic_big);
+        				albumpicsmall.push(result.showapi_res_body.pagebean.songlist[i].albumpic_small)
+        				songName.push(result.showapi_res_body.pagebean.songlist[i].songname);
+        				singerName.push(result.showapi_res_body.pagebean.songlist[i].singername);
+        				songTime.push(result.showapi_res_body.pagebean.songlist[i].seconds);
+        			}
+        			for (var j=0;j<=5;j++) {
+        				$("#NewList ul").append("<li>"+result.showapi_res_body.pagebean.songlist[j].songname +"</li>")
+        			}
+        			
+        			//给img添加事件点击播放对应的歌曲
+        			var listArr=document.getElementById("list1").getElementsByTagName("img");
+        			var songNameArr=document.getElementsByClassName("list-songName");
+        			var singerNameArr=document.getElementsByClassName("list-songer");
+        			var songTimeArr=document.getElementsByClassName("list-time");
+        			
+        			listArr[0].setAttribute("src",albumpicsmall[0]);
+        			listArr[1].setAttribute("src",albumpicsmall[1]);
+        			listArr[2].setAttribute("src",albumpicsmall[2]);
+        			listArr[3].setAttribute("src",albumpicsmall[3]);
+        			listArr[4].setAttribute("src",albumpicsmall[4]);
+        			listArr[5].setAttribute("src",albumpicsmall[5]);
+        			listArr[6].setAttribute("src",albumpicsmall[6]);
+        			listArr[7].setAttribute("src",albumpicsmall[7]);
+        			listArr[8].setAttribute("src",albumpicsmall[8]);
+        			
+        			songNameArr[0].innerHTML=songName[0]+"<i class='icon_new list_menu'></i>";
+        			songNameArr[1].innerHTML=songName[1]+"<i class='icon_new list_menu'></i>";
+        			songNameArr[2].innerHTML=songName[2]+"<i class='icon_new list_menu'></i>";
+        			songNameArr[3].innerHTML=songName[3]+"<i class='icon_new list_menu'></i>";
+        			songNameArr[4].innerHTML=songName[4]+"<i class='icon_new list_menu'></i>";
+        			songNameArr[5].innerHTML=songName[5]+"<i class='icon_new list_menu'></i>";
+        			songNameArr[6].innerHTML=songName[6]+"<i class='icon_new list_menu'></i>";
+        			songNameArr[7].innerHTML=songName[7]+"<i class='icon_new list_menu'></i>";
+        			songNameArr[8].innerHTML=songName[8]+"<i class='icon_new list_menu'></i>";
+        			
+        			singerNameArr[0].innerHTML=singerName[0];
+        			singerNameArr[1].innerHTML=singerName[1];
+        			singerNameArr[2].innerHTML=singerName[2];
+        			singerNameArr[3].innerHTML=singerName[3];
+        			singerNameArr[4].innerHTML=singerName[4];
+        			singerNameArr[5].innerHTML=singerName[5];
+        			singerNameArr[6].innerHTML=singerName[6];
+        			singerNameArr[7].innerHTML=singerName[7];
+        			singerNameArr[8].innerHTML=singerName[8];
+        			
+        			//songTimeArr[0].innerHTML=Math.floor(songTime[0]/60)+":"+(songTime[0]-Math.floor(songTime[0]/60)*60);
+        			songTimeArr[0].innerHTML=toHourMinute(songTime[0]);
+        			songTimeArr[1].innerHTML=toHourMinute(songTime[1]);
+        			songTimeArr[2].innerHTML=toHourMinute(songTime[2]);
+        			songTimeArr[3].innerHTML=toHourMinute(songTime[3]);
+        			songTimeArr[4].innerHTML=toHourMinute(songTime[4]);
+        			songTimeArr[5].innerHTML=toHourMinute(songTime[5]);
+        			songTimeArr[6].innerHTML=toHourMinute(songTime[6]);
+        			songTimeArr[7].innerHTML=toHourMinute(songTime[7]);
+        			songTimeArr[8].innerHTML=toHourMinute(songTime[8]);
+        			
+        			//秒转成分钟函数
+        			function toHourMinute(minutes){
+					  return (Math.floor(minutes/60) + ":" + (minutes%60));
+					  // 也可以转换为json，以方便外部使用
+					  // return {hour:Math.floor(minutes/60),minute:(minutes%60)};
+					}
+					// 使用示例
+					//alert(toHourMinute(songTime[0]));
+					
+        			$("#list1 img").click(function(){
+      					//获取点击相应的下标
+        				//alert($("#list1 img").index(this))
+        				player.play([songArr[$("#list1 img").index(this)]]);
+        				$("#cover").attr("src",albumpicArr[$("#list1 img").index(this)]);
+        				player.on("error",function  () {
+        					alert("应版权方要求此歌曲需付费播放！");
+        				});
+        			});
+        			$("#list1 img").mousemove(function(){
+        				//alert("1")
+        				
+        			});		
+    			}
+			});
+			
+			function peakList (listId,elementsObj) {
+				$.ajax({
+	    			type: 'post',
+	    			url: 'http://route.showapi.com/213-4',
+	   	 			dataType: 'json',
+	    			data: {
+	        			"showapi_timestamp": formatterDateTime(),
+	        			"showapi_appid": '76001', //这里需要改成自己的appid
+	        			"showapi_sign": 'c99ee88e33f344eaa5ea211bd2e12445',  //这里需要改成自己的应用的密钥secret
+	        			"topid":listId
+	
+	    			},
+	
+	    			error: function(XmlHttpRequest, textStatus, errorThrown) {
+	        			alert("操作失败!");
+	    			},
+	    			success: function(result) {
+	        			//console.log(result) //console变量在ie低版本下不能用
+	        			var songArr2=[];
+	        			var songName2=[];
+	        			//li添加榜单----5首
+	        			for (var i=0;i<=5;i++) {
+	        				$("#"+elementsObj+" ul").append("<li>"+result.showapi_res_body.pagebean.songlist[i].songname +"</li>");
+	        				//alert(result.showapi_res_body.pagebean.songlist[i].songid);
+	        				songArr2.push(result.showapi_res_body.pagebean.songlist[i].songid);
+	        				songName2.push(result.showapi_res_body.pagebean.songlist[i].songname);
+	        			}
+	        			//alert(songArr2.length)
+	    			}
+				});
+			}
+			peakList("4","popList");
+			peakList("5","CnList");
+			peakList("3","EuList");
+			
+			//peakList(26,'NewList');
+			//peakList("16",'KoreaList');
+			
+			
+			//唱片转动
+			player.onplay=function(){
+					document.getElementById("cover").style.animationPlayState="running"
+				}
+			player.onpause=function(){
+				document.getElementById("cover").style.animationPlayState="paused"
+			}
+			document.getElementById("bf").style.display="none";
+			document.getElementById("zt").style.display="inline";
+				
+				
+			$("#cover").click(function(){
+				player.toggle();
+			});
+			function xyq () {
+				player.playNext();
+			}
+			function syq () {
+				player.playPrev();
+			}
+			//暂停
+			function zt () {
+				player.pause();
+				document.getElementById("zt").style.display="none";
+				document.getElementById("bf").style.display="inline";
+					
+			}
+			//播放
+			function bf () {
+				player.play();
+				document.getElementById("zt").style.display="inline";
+				document.getElementById("bf").style.display="none";
+					
+			}
+			var hongbar=document.getElementById("hong");
+			var huibar=document.getElementById("hui");
+			player.ontimeupdate=function(){
+				var lanbar=document.getElementById("lan")
+				hongbar.style.left=-800+player.currentTime/player.duration*800+"px";
+				lanbar.style.left=395+player.currentTime/player.duration*800+"px";
+				
+				document.getElementById("bjjd").innerHTML=
+				geshi(parseInt(player.currentTime/60))+":"+
+				geshi(parseInt(player.currentTime%60));
+				document.getElementById("qbjd").innerHTML=
+				geshi(parseInt(player.duration/60))+":"+
+				geshi(parseInt(player.duration%60))
+			}
+			function geshi (n) {
+				if (n<10) {
+					return "0"+n
+				} else{
+					return n;
+				}
+			}
+			//鼠标点击进度条跳转到播放位置
+			huibar.onclick=function(e) {
+				//alert("1")
+				player.currentTime=e.offsetX/800*player.duration;
+			}
+			hongbar.onclick=function(e) {
+				player.currentTime=(e.offsetX+parseInt(hongbar.style.left))/800*player.duration;
+				
+			}
+			//播放器伸缩
+			var isExtend=false;
+			
+			$("#extendBar").click(function() {
+				isExtend=!isExtend;
+				if (isExtend==true) {
+					$("#MusicPlayer").css("left","0");
+				} 
+				if (isExtend==false) {
+					$("#MusicPlayer").css("left","-1450px");
+				}
+				//alert(isExtend)
+				
+			});
+			</script>
+	</body>
+</html>

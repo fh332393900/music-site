@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="img/logo.png" type="image/x-icon">
+		<title>乐呵音乐-高质量音乐在线聆听，下载</title>
+		<style>
+			body,html{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: white;
+			}
+			/*头部样式,导航栏*/
+	    	#headArea{
+	    		width: 100%;
+	    		height: 80px;
+	    		/*border: 1px solid red;*/
+	    		
+	    		position: relative;
+	    		background-color: rgba(0,0,0,0.8);
+	    		
+	    	}
+	    	#logoArea{
+	    		width: 10%;
+	    		height: 100%;
+	    		/*border: 1px solid blueviolet;*/
+	    		margin-left: 10%;
+	    	}
+	    	#logoArea img{
+	    		height: 80%;
+	    		position: absolute;
+	    		top: 10%;
+	    		left: 15%;
+	    	}
+	    	#daoHang{
+	    		width: 50%;
+	    		height: 100%;
+	    		/*border: 1px solid red;*/
+	    		color: black;
+	    		position: absolute;
+	    		left: 20%;
+	    		top: 0;
+	    		
+	    		
+	    	}
+	    	#daoHang a{
+	    		text-decoration: none;
+	    	}
+	    	@font-face {
+	    		font-family:poppin;
+	    		src: url("https://y.gtimg.cn/mediastyle/yqq/font/poppin.ttf?max_age=2592000");
+	    	}
+	    	#daoHang li{
+	    		height: 100px;
+	    		width: 100px;
+	    		list-style-type: none;
+	    		text-align: center;
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		font-size: 18px;
+	    		vertical-align: middle;
+	    		position: absolute;
+	    		
+	    	}
+	    	#daoHang li:nth-of-type(1){
+	    		left: 0;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(2){
+	    		left: 100px;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(3){
+	    		left: 200px;
+	    		top: 0;	
+	    		
+	    	}
+	    	#daoHang li:nth-of-type(4){
+	    		left: 300px;
+	    		top: 0;	
+	    	}
+	    	#daoHang a{
+	    		width: 100px;
+	    		height: 80px;
+	    		display: block;
+	    		color: white;
+	    		position: relative;
+	    		line-height: 90px;
+	    		
+	    		
+	    	}
+	    	#daoHang a:hover{
+	    		background-color: #009af3;
+	    		color: white;
+	    		cursor: pointer;
+	    		transition: all 0.5s;
+	    	}
+	    	/*头部样式---END*/
+	    	/*歌手背景样式*/
+	    	#bgArea{
+	    		width: 100%;
+	    		height: 200px;
+	    		position: relative;
+	    		top: 0px;
+	    		background-image: url(img/bg-search3.jpg);
+	    		background-position-y: 35%;
+	    		background-repeat: no-repeat;
+	    		background-size: 100%;	
+	    	}
+	    	
+	    	#contentArea{
+	    		width: 80%;
+	    		height: 600px;
+	    		margin-left: 10%;
+				position: relative;
+				top: 0px;
+	    	}
+	    	#singerBar{
+	    		width: 200px;
+	    		height: 600px;
+	    		margin-left: 10%;
+				position: absolute;
+				
+	    	}
+	    	#singerBar ul{
+	    		margin: 0;
+	    		padding: 0;
+	    	}
+	    	.singerType{
+	    		list-style: none;
+	    		width: 200px;
+	    		height: 30px;
+	    		text-align: center;	
+	    		font-size: 16px;
+	    		position: relative;
+	    	}
+	    	.singerType:nth-of-type(1){
+	    		margin-top: 20px;
+	    	}
+	    	.singerType:nth-of-type(5){
+	    		margin-top: 40px;
+	    	}
+	    	.singerType:nth-of-type(8){
+	    		margin-top: 40px;
+	    	}
+	    	.singerType:nth-of-type(11){
+	    		margin-top: 40px;
+	    	}
+	    	.singerType:hover{
+	    		background-color: #85d2f2;
+	    		cursor: pointer;
+	    		color: white;
+	    	}
+	    	.singerType a{
+	    		position: relative;
+	    		top: 4px;
+	    	}
+	    	#singerList{
+	    		width: 850px;
+	    		height: 600px;
+	    		position: absolute;
+	    		left: 350px;
+	    	}
+	    	#singerList #top_10{
+	    		margin: 0;
+	    		padding: 0;
+	    		margin-top: 10px;
+	    	}
+	    	#singerList #top_10 li{
+	    		list-style: none;
+	    		position: relative;
+	    		display: inline-block;
+	    		margin-left: 20px;
+	    		margin-top: 20px;
+	    		font-size: 14px;
+	    		width: 140px;
+	    		height: 160px;
+	    	}
+	    	#singerList #top_10 a{
+	    		text-decoration: none;
+	    		color: black;
+	    	}
+	    	#singerList #top_10 li img{
+	    		width: 100px;
+	    		height: 100px;
+	    		border-radius: 50%;
+	    		position: relative;
+	    		margin-left: 20px;
+	    		cursor: pointer;
+	    	}
+	    	#singerList #top_10 li p{
+	    		position: relative;
+	    		text-align: center;	
+	    		cursor: pointer;
+	    	}
+	    	#singerList ul li p:hover{
+	    		color: #85d2f2;
+	    	}
+	    	#singerList #after_10{
+	    		margin: 0;
+	    		padding: 0;
+	    	}
+	    	#singerList #after_10 li{
+	    		list-style: none;
+	    		display: inline-block;
+	    		margin-left: 20px;	
+	    		font-size: 14px;
+	    		width: 100px;
+	    		height: 40px;
+	    	}
+	    	#singerList #after_10 li p{
+	    		position: relative;
+	    		cursor: pointer;
+	    	}
+	    	#tp-weather-widget{
+				position: absolute;
+				top: 25px;
+				right: 10px;
+				color: white;
+				z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tp-weather-widget"></div>
+		<script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+		<script>tpwidget("init", {
+		    "flavor": "slim",
+		    "location": "WX4FBXXFKE4F",
+		    "geolocation": "enabled",
+		    "language": "zh-chs",
+		    "unit": "c",
+		    "theme": "chameleon",
+		    "container": "tp-weather-widget",
+		    "bubble": "enabled",
+		    "alarmType": "badge",
+		    "color": "#FFFFFF",
+		    "uid": "U485367323",
+		    "hash": "5ac870bc084415c97cda58b8cc150112"
+		});
+		tpwidget("show");</script>
+		<!--头部区域-->
+		<div id="headArea">
+			<div id="logoArea">
+				<img src="img/logo.png" />
+			</div>
+			<!--导航-->
+			<div id="daoHang">
+				<ul>
+					<li><a href="first.html">首页</a></li>
+					<li><a href="singerPage.html">歌手</a></li>
+					<li><a href="toplistPage.html">排行榜</a></li>
+					<li><a href="mvPage.html">MV</a></li>
+				</ul>
+			</div>
+			<!--导航---END-->
+		</div>
+		<!--头部区域---END-->
+		<div id="bgArea">
+			
+		</div>
+		<div id="contentArea">
+			<div id="singerBar">
+				<ul>
+					<li class="singerType"><a onclick="singerList('all_all')">全部歌手</a></li>
+					<li class="singerType" onclick="singerList('cn_man')"><a>华语男歌手</a></li>
+					<li class="singerType" onclick="singerList('cn_woman')"><a>华语女歌手</a></li>
+					<li class="singerType" onclick="singerList('cn_team')"><a>华语组合</a></li>
+					
+					<li class="singerType" onclick="singerList('eu_man')"><a>欧美男歌手</a></li>
+					<li class="singerType" onclick="singerList('eu_woman')"><a>欧美女歌手</a></li>
+					<li class="singerType" onclick="singerList('eu_team')"><a>欧美组合</a></li>
+					
+					<li class="singerType" onclick="singerList('k_man')"><a>韩国男歌手</a></li>
+					<li class="singerType" onclick="singerList('k_woman')"><a>韩国女歌手</a></li>
+					<li class="singerType" onclick="singerList('k_team')"><a>韩国组合</a></li>
+					
+					<li class="singerType" onclick="singerList('j_man')"><a>日本男歌手</a></li>
+					<li class="singerType" onclick="singerList('j_woman')"><a>日本女歌手</a></li>
+					<li class="singerType" onclick="singerList('j_team')"><a>日本组合</a></li>
+				</ul>
+			</div>
+			<div id="singerList">
+				<!--<img />-->
+				<ul id="top_10">
+					
+				</ul>
+				<ul id="after_10">
+					
+				</ul>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+		<script>
+			
+			function singerList(parames) {
+				$("#singerList ul").empty();
+				$.ajax({
+					type:"get",
+					url:'https://c.y.qq.com/v8/fcg-bin/v8.fcg?channel=singer&page=list&pagesize=100&format=json&inCharset=utf8&outCharset=utf-8&pagenum=1&key='+parames+'_all',
+					dataType:'jsonp',
+		          	jsonp: "jsonpCallback",
+		          	scriptCharset: 'GBK',//解决中文乱码
+		          	success:function(data) {
+		          		console.log(data)
+		          		var singerMid=[];
+		          		var singerPic_url=[];
+		          		for (var i=0;i<data.data.list.length;i++) {
+		          			singerMid.push(data.data.list[i].Fsinger_mid);	
+		          		}
+		          		for (var j=0;j<10;j++) {
+		          			$("#singerList #top_10").append("<li><a href='singer.html'><img /><p>"+data.data.list[j].Fsinger_name+"</p></a></li>");
+		          			singerPic_url.push('https://y.gtimg.cn/music/photo_new/T001R300x300M000'+data.data.list[j].Fsinger_mid+'.jpg?max_age=2592000');
+		          		}
+		          		for (var k=0;k<10;k++) {
+		          			$("#singerList img:eq("+k+")").attr("src",singerPic_url[k]);
+		          		}
+		          		for (var p=10;p<data.data.list.length;p++) {
+		          			$("#singerList #after_10").append("<li><p>"+data.data.list[p].Fsinger_name+"</p></li>");
+		          		}
+		          		$("#singerList #top_10 li").click(function() {
+		          			//alert(singerMid[$("#singerList #top_10 li").index(this)]);
+		          			//用Cookie向singer.html传值(mid)
+		          			function setCookie(name,value){
+								var Days = 30; 
+								var exp　= new Date();
+								exp.setTime(exp.getTime() +Days*24*60*60*1000);
+								document.cookie = ""+name +"="+ escape (value) + ";expires=" + exp.toGMTString();
+							}
+								setCookie('name',singerMid[$("#singerList #top_10 li").index(this)]);
+								location.href = "singer.html";
+
+		          		});	
+		          		$("#singerList #after_10 li").click(function() {
+		          			//alert($("#singerList #after_10 li").index(this)+10);
+		          			//alert(singerMid[$("#singerList #after_10 li").index(this)+10]);
+		          			function setCookie(name,value){
+								var Days = 30; 
+								var exp　= new Date();
+								exp.setTime(exp.getTime() +Days*24*60*60*1000);
+								document.cookie = ""+name +"="+ escape (value) + ";expires=" + exp.toGMTString();
+							}
+								setCookie('name',singerMid[$("#singerList #after_10 li").index(this)+10]);
+								location.href = "singer.html";
+		          			
+		          		});
+		          		
+		          	},
+		          	error:function(e) {
+		          		console.log('error');
+		          	}
+				});
+			}
+			//进入页面先调用一次华语男歌手
+			singerList('all_all');
+			
+		
+			
+			
+		</script>
+	</body>
+</html>

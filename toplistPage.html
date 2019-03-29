@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="img/logo.png" type="image/x-icon">
+		<title>乐呵音乐-高质量音乐在线聆听，下载</title>
+		<style>
+			body,html{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: white;
+			}
+			/*头部样式,导航栏*/
+	    	#headArea{
+	    		width: 100%;
+	    		height: 80px;
+	    		/*border: 1px solid red;*/
+	    		
+	    		position: relative;
+	    		background-color: rgba(0,0,0,0.8);
+	    		
+	    	}
+	    	#logoArea{
+	    		width: 10%;
+	    		height: 100%;
+	    		/*border: 1px solid blueviolet;*/
+	    		margin-left: 10%;
+	    	}
+	    	#logoArea img{
+	    		height: 80%;
+	    		position: absolute;
+	    		top: 10%;
+	    		left: 15%;
+	    	}
+	    	#daoHang{
+	    		width: 50%;
+	    		height: 100%;
+	    		/*border: 1px solid red;*/
+	    		color: black;
+	    		position: absolute;
+	    		left: 20%;
+	    		top: 0;
+	    		
+	    		
+	    	}
+	    	#daoHang a{
+	    		text-decoration: none;
+	    	}
+	    	@font-face {
+	    		font-family:poppin;
+	    		src: url("https://y.gtimg.cn/mediastyle/yqq/font/poppin.ttf?max_age=2592000");
+	    	}
+	    	#daoHang li{
+	    		height: 100px;
+	    		width: 100px;
+	    		list-style-type: none;
+	    		text-align: center;
+	    		font-family: "poppin,Tahoma,Arial,微软雅黑,sans-serif";
+	    		font-size: 18px;
+	    		vertical-align: middle;
+	    		position: absolute;
+	    		
+	    	}
+	    	#daoHang li:nth-of-type(1){
+	    		left: 0;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(2){
+	    		left: 100px;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(3){
+	    		left: 200px;
+	    		top: 0;	
+	    	}
+	    	#daoHang li:nth-of-type(4){
+	    		left: 300px;
+	    		top: 0;	
+	    	}
+	    	#daoHang a{
+	    		width: 100px;
+	    		height: 80px;
+	    		display: block;
+	    		color: white;
+	    		position: relative;
+	    		line-height: 90px;
+	    		
+	    		
+	    	}
+	    	#daoHang a:hover{
+	    		background-color: #009af3;
+	    		color: white;
+	    		cursor: pointer;
+	    		transition: all 0.5s;
+	    	}
+	    	/*头部样式---END*/
+	    	/*背景图片样式*/
+	    	#bgArea{
+	    		width: 100%;
+	    		height: 200px;
+	    		position: relative;
+	    		top: 0px;
+	    		background-image: url(img/bg-search3.jpg);
+	    		background-position-y: 35%;
+	    		background-repeat: no-repeat;
+	    		background-size: 100%;	
+	    	}
+	    	/*背景图片样式---END*/
+	    	#bgArea p{
+	    		font-size: 36px;
+	    		color:antiquewhite;
+	    		font-weight: bold;
+	    		position: absolute;
+	    		left: 45%;
+	    		top: 10%;
+	    	}
+	    	
+	    	#contentArea{
+	    		width: 80%;
+	    		height: 600px;
+	    		margin-left: 10%;
+				position: relative;
+				top: 40px;
+				
+	    	}
+	    	#toplistBar{
+	    		width: 120px;
+	    		position: absolute;
+	    		left: 15%;
+	    		
+	    		height: 100%;
+	    	}
+	    	#toplistBar ul{
+	    		margin: 0;
+	    		padding: 0;
+	    		position: absolute;
+	    		left: 0%;
+	    		
+	    		width: 120px;
+	    		height: 100%;
+	    	}
+	    	#toplistBar ul li{
+	    		list-style-type:none ;
+	    		font-size: 12px;
+	    		margin-top: 15px;
+	    	}
+	    	#toplistBar ul li:nth-of-type(1){
+	    		
+	    		margin-top: 40px;
+	    	}
+	    	#toplistBar ul li:hover{
+	    		color: #009af3;
+	    		cursor: pointer;
+	    	}
+	    	#toplistBar ul li span{
+	    		margin-left: 8px;
+	    		position: absolute;
+	    		
+	    		
+	    	}
+	    	#toplist{
+	    		width: 60%;
+	    		height: 100%;
+	    		position: absolute;
+	    		left: 25%;
+	    	}
+	    	#listname{
+	    		font-size: 16px;
+	    		position: relative;
+	    		left: 0%;
+	    	}
+	    	#listMsg{
+	    		width: 100%;
+	    		height: 50px;
+	    		
+	    	}
+	    	#toplist #listTitle{
+	    		position: relative;
+	    		font-size: 18px;
+	    		font-weight: bold;
+	    	}
+	    	#toplist ul{
+	    		margin: 0;
+	    		padding: 0;
+	    		height: 80%;
+	    		width: 100%;
+	    		position: absolute;
+	    		top: 70px;
+	    		border-top: 1px solid darkgray;
+	    	}
+	    	#update{
+	    		position: relative;
+	    		margin-left: 30px;
+	    		top: -2px;
+	    		color: grey;
+	    		font-family: arial;
+	    		font-size: small;
+	    	}
+	    	#toplist ul li{
+	    		list-style-type: none;
+	    		width: 100%;
+	    		height: 80px;
+	    		position: relative;
+	    		
+	    	}
+	    	#toplist img{
+	    		height: 70px;
+	    		position: relative;
+	    		left: 50px;
+	    		top: 5px;
+	    		cursor: pointer;
+	    	}
+	    	#toplist .songname{
+	    		color: black;
+	    		font-size: 12px;
+	    		position: absolute;
+	    		margin-left: 80px;
+	    		top: 30px;
+	    		cursor: pointer;
+	    	}
+	    	.singername{
+	    		color: black;
+	    		font-size: 12px;
+	    		width: 100px;
+	    		height: 30px;
+	    		cursor: pointer;
+	    		position: absolute;
+	    		left: 500px;
+	    		top: 30px;
+	    	}
+	    	#tp-weather-widget{
+				position: absolute;
+				top: 25px;
+				right: 10px;
+				color: white;
+				z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tp-weather-widget"></div>
+		<script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+		<script>tpwidget("init", {
+		    "flavor": "slim",
+		    "location": "WX4FBXXFKE4F",
+		    "geolocation": "enabled",
+		    "language": "zh-chs",
+		    "unit": "c",
+		    "theme": "chameleon",
+		    "container": "tp-weather-widget",
+		    "bubble": "enabled",
+		    "alarmType": "badge",
+		    "color": "#FFFFFF",
+		    "uid": "U485367323",
+		    "hash": "5ac870bc084415c97cda58b8cc150112"
+		});
+		tpwidget("show");</script>
+		<!--头部区域-->
+		<div id="headArea">
+			<div id="logoArea">
+				<img src="img/logo.png" />
+			</div>
+			<!--导航-->
+			<div id="daoHang">
+				<ul>
+					<li><a href="first.html">首页</a></li>
+					<li><a href="singerPage.html">歌手</a></li>
+					<li><a>排行榜</a></li>
+					<li><a href="mvPage.html">MV</a></li>
+				</ul>
+			</div>
+			<!--导航---END-->
+		</div>
+		<!--头部区域---END-->
+		<div id="bgArea">
+			<p>巅峰榜</p>
+		</div>
+		<div id="contentArea">
+			<div id="toplistBar">
+				<span id="listname">热门榜单</span>
+				<ul>
+					<li onclick="gettoplist('4')"><img src="img/wlhg.png" /><span>流行榜</span></li>
+					<li onclick="gettoplist('27')"><img src="img/new.png" /><span>新歌榜</span></li>
+					<li onclick="gettoplist('5')"><img src="img/hyxg.jpg" /><span>内地榜</span></li>
+					<li onclick="gettoplist('6')"><img src="img/gt.jpg" /><span>港台榜</span></li>
+					<li onclick="gettoplist('3')"><img src="img/eu.jpg" /><span>欧美榜</span></li>
+					<li onclick="gettoplist('16')"><img src="img/kr.jpg" /><span>韩国榜</span></li>
+					<li onclick="gettoplist('17')"><img src="img/jp.jpg" /><span>日本榜</span></li>
+					<li onclick="gettoplist('108')"><img src="img/billboard.png" /><span>美国BillBoard榜</span></li>
+				</ul>
+			</div>
+			<div id="toplist">
+				<div id="listMsg">
+					<span id="listTitle"></span>
+					<span id="update"></span>
+					
+				</div>
+				
+				<ul></ul>
+			</div>
+			
+			
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+		<script>
+			function  gettoplist(parames) {
+				//alert("1")
+				$("#toplist ul").empty();
+				$.ajax({
+					type:"get",
+					url:"https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?tpl=3&page=detail&type=top&song_begin=0&g_tk=1742895503&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&song_num=30&topid="+parames+"",
+					dataType:'jsonp',
+					jsonp: "jsonpCallback",
+		          	scriptCharset: 'GBK',//解决中文乱码
+		          	success:function(data) {
+		          		console.log(data);
+		          		$("#toplist #listTitle").html(data.topinfo.ListName);
+		          		$("#update").html('更新日期: '+data.update_time)
+		          		//alert(data.topinfo.ListName);
+		          		var alumbPic=[];
+		          		for (var i=0;i<data.songlist.length;i++) {
+		          			$("#toplist ul").append("<li><img /><span class='songname'>"+data.songlist[i].data.songname+"</span><span class='singername'>"+data.songlist[i].data.singer[0].name+"</span></li>");
+		          			alumbPic.push("https://y.gtimg.cn/music/photo_new/T002R300x300M000"+data.songlist[i].data.albummid+".jpg?max_age=2592000")
+		          			
+		          		}
+		          		for (var j=0;j<data.songlist.length;j++) {
+		          			$("#toplist img:eq("+j+")").attr("src",alumbPic[j]);
+		          		}
+		          	},
+		          	error:function(e) {
+		          		console.log(e)
+		          	}
+				});
+			}
+			gettoplist('4')
+		</script>
+	</body>
+</html>

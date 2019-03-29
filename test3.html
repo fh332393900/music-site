@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="img/logo.png" type="image/x-icon">
+		<title>乐呵音乐-高质量音乐在线聆听，下载</title>
+		<style>
+			html,body{
+				margin: 0;
+				padding: 0;
+			}
+			video{
+				width: 1000px;
+				position: absolute;
+				left: 250px;
+				top: 100px;
+				z-index: 100;
+			}
+			#mvarea{
+				width: 100%;
+				height: 700px;
+				background-color: #333333;
+				
+			}
+			#mvtitle{
+				width: 1000px;
+				height: 50px;
+				position: absolute;
+				left: 250px;
+				top: 30px;
+			}
+			#mvtitle p{
+				color: white;
+				font-size: 20px;
+			}
+			#mvMsg{
+				width: 1000px;
+				height: 400px;
+				position: absolute;
+				top: 700px;
+				left: 250px;
+				
+			}
+			#mvMsg p:nth-of-type(1){
+				color: black;
+				
+				font-size: 16px;
+			}
+			#mvInfo{
+				font-size: 10px;
+				color: black;
+				line-height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mvtitle">
+			<p></p>
+		</div>
+		<div id="mvarea">
+			<video controls="controls"></video>
+		</div>
+		
+		<div id="box">
+			<ul></ul>
+		</div>
+		<div id="mvMsg">
+			<p>视频简介：</p>
+			<p id="mvInfo"></p>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+		<script>
+			//获取cookie值
+			function getCookie(mvid){
+				var arr =document.cookie.match(new RegExp("(^|)"+mvid+"=([^;]*)(;|$)"));
+				if(arr !=null) return unescape(arr[2]); 
+				return null;
+			}
+			var val=getCookie('mvid');
+			//var url = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&singermid=001fNHEf1SFEFN&order=listen&begin=0&num=30';
+	        //var url='https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&platform=h5&uin=0&needNewCode=1'
+	        
+	        $.ajax({
+	          url:"https://u.y.qq.com/cgi-bin/musicu.fcg?data=%7B%22getMvUrl%22%3A%7B%22module%22%3A%22gosrf.Stream.MvUrlProxy%22%2C%22method%22%3A%22GetMvUrls%22%2C%22param%22%3A%7B%22vids%22%3A%5B%22"+val+"%22%5D%2C%22request_typet%22%3A10001%7D%7D%7D&g_tk=1026105057&callback=jQuery11230676108157062473_1540371116513&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=GB2312&notice=0&platform=yqq&needNewCode=0",
+	          type:"get",
+	          dataType:'jsonp',
+	          jsonp: "jsonpCallback",
+	          jsonpCallback:"jQuery11230676108157062473_1540371116513",
+	          callback:'callback',
+	          scriptCharset: 'GBK',//解决中文乱码
+	          success: function(data){
+	            
+	            //console.log(data);
+	            var vid_list=data.getMvUrl.data;
+	            //遍历json数据
+	            for (var p in vid_list) {
+	            	console.log(vid_list[p]);
+	            	$("video").attr("src",vid_list[p].mp4[4].freeflow_url[2]);
+	            	if (vid_list[p].mp4[4].freeflow_url[2]==null) {
+	            		//alert("无链接");
+	            		$("video").attr("src",vid_list[p].mp4[3].freeflow_url[2]);
+	            		if (vid_list[p].mp4[3].freeflow_url[2]==null) {
+	            			$("video").attr("src",vid_list[p].mp4[2].freeflow_url[2]);
+	            			if (vid_list[p].mp4[2].freeflow_url[2]==null) {
+	            				$("video").attr("src",vid_list[p].mp4[1].freeflow_url[2]);
+	            			}
+	            		}
+	            		
+	            	}
+	            }
+	            //console.log(data.getMvUrl.data);  
+	          },
+	          error:function (e) {
+	            console.log('error');
+	          }
+	        });
+	        $.ajax({
+	        	url:"https://u.y.qq.com/cgi-bin/musicu.fcg?callback=getUCGI7689703954596607&g_tk=762188800&jsonpCallback=getUCGI7689703954596607&loginUin=332393900&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&data=%7B%22comm%22%3A%7B%22ct%22%3A24%2C%22cv%22%3A4747474%7D%2C%22mvinfo%22%3A%7B%22module%22%3A%22video.VideoDataServer%22%2C%22method%22%3A%22get_video_info_batch%22%2C%22param%22%3A%7B%22vidlist%22%3A%5B%22"+val+"%22%5D%2C%22required%22%3A%5B%22vid%22%2C%22type%22%2C%22sid%22%2C%22cover_pic%22%2C%22duration%22%2C%22singers%22%2C%22video_switch%22%2C%22msg%22%2C%22name%22%2C%22desc%22%2C%22playcnt%22%2C%22pubdate%22%2C%22isfav%22%2C%22gmid%22%5D%7D%7D%2C%22other%22%3A%7B%22module%22%3A%22video.VideoLogicServer%22%2C%22method%22%3A%22rec_video_byvid%22%2C%22param%22%3A%7B%22vid%22%3A%22"+val+"%22%2C%22required%22%3A%5B%22vid%22%2C%22type%22%2C%22sid%22%2C%22cover_pic%22%2C%22duration%22%2C%22singers%22%2C%22video_switch%22%2C%22msg%22%2C%22name%22%2C%22desc%22%2C%22playcnt%22%2C%22pubdate%22%2C%22isfav%22%2C%22gmid%22%2C%22uploader_headurl%22%2C%22uploader_nick%22%2C%22uploader_encuin%22%2C%22uploader_uin%22%2C%22uploader_hasfollow%22%2C%22uploader_follower_num%22%5D%2C%22support%22%3A1%7D%7D%7D",
+	          	type:"get",
+	          	dataType:'jsonp',
+	          	jsonp: "jsonpCallback",
+	          	jsonpCallback:"getUCGI7689703954596607",
+	          	callback:'callback',
+	          	scriptCharset: 'GBK',//解决中文乱码
+	          	success:function  (data) {
+	          		
+	          		var info=data.mvinfo.data;
+	          		for (var q in info) {
+	          			console.log(info[q]);
+	          			$("#mvtitle p").html(info[q].name+"——"+info[q].singers[0].name);
+	 
+	          			$("#mvInfo").html(info[q].desc);
+	          			if (info[q].desc=='') {
+	          				$("#mvInfo").html(info[q].name+"——"+info[q].singers[0].name);
+	          			} 
+	          		}
+	          		
+	          	},
+	          	error:function(err) {
+	          		console.log('error')
+	          	}
+	          	
+	        });
+		</script>
+	</body>
+</html>

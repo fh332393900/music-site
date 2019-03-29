@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				list-style-type: none;
+			}
+			a{
+				text-decoration: none;
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="box">
+			<ul></ul>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+		<script>
+			//var url = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&singermid=001fNHEf1SFEFN&order=listen&begin=0&num=30';
+	        //var url='https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&platform=h5&uin=0&needNewCode=1'
+	        $.ajax({
+	          url:"https://c.y.qq.com/mv/fcgi-bin/getmv_by_tag?g_tk=762188800&jsonpCallback=getMvlist&loginUin=332393900&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&utf8=1&type=2&year=0&area=0&tag=0&pageno=0&pagecount=100&otype=json&taglist=1&_=0.7472283373980757",
+	          type:"get",
+	          dataType:'jsonp',
+	          jsonp: "jsonpCallback",
+	          jsonpCallback:"getMvlist",
+	          callback:'callback',
+	          scriptCharset: 'GBK',//解决中文乱码
+	          success: function(data){
+	            //最新音乐数据
+	            //var MusicJsonCallback;
+	            console.log(data);
+	            var vid=[];
+	            for (var j=0;j<data.data.mvlist.length;j++) {
+				    $("#box ul").append("<li><a href='test3.html'>"+data.data.mvlist[j].mvtitle+"</a></li>");
+					vid.push(data.data.mvlist[j].vid);
+	            }
+	            $("#box li").click(function() {
+	            	function setCookie(vid,value){
+						var Days = 3; 
+						var exp　= new Date();
+						exp.setTime(exp.getTime() +Days*24*60*60*1000);
+						document.cookie = ""+vid +"="+ escape (value) + ";expires=" + exp.toGMTString();
+					}
+					setCookie('vid',vid[$("#box li").index(this)]);
+					location.href = "test3.html";
+	            });
+	            
+	            
+	          },
+	          error:function (e) {
+	            console.log('error');
+	          }
+	        });
+		</script>
+	</body>
+</html>
